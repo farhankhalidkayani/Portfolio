@@ -71,8 +71,14 @@ const Experience: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="section bg-gray-50 dark:bg-gray-900">
-      <div className="section-container">
+    <section
+      id="experience"
+      className="section bg-gray-50 dark:bg-gray-900 relative overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-circuit-pattern"></div>
+      <div className="absolute top-40 right-20 w-80 h-80 bg-accent opacity-5 rounded-full blur-3xl"></div>
+
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,6 +87,7 @@ const Experience: React.FC = () => {
           className="mb-12 text-center"
         >
           <h2 className="section-heading mx-auto">Work Experience</h2>
+          <div className="h-1 w-24 bg-accent mt-6 mb-6 mx-auto"></div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
             My professional journey in backend development, focusing on
             server-side architecture, API development, and database design.

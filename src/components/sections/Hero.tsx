@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { FiArrowDown } from "react-icons/fi";
+import { FiArrowDown, FiCode, FiDatabase, FiServer } from "react-icons/fi";
+import ParticleBackground from "../ui/ParticleBackground";
 
 const Hero: React.FC = () => {
   return (
@@ -9,9 +10,14 @@ const Hero: React.FC = () => {
       id="home"
       className="min-h-screen flex items-center relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden"
     >
+      {/* Backgrounds */}
+      <ParticleBackground className="opacity-50" />
       <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10"></div>
-      <div className="absolute top-[20%] right-[10%] w-64 h-64 bg-accent opacity-10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-[10%] left-[5%] w-72 h-72 bg-purple-500 opacity-10 rounded-full blur-3xl"></div>
+      <div className="absolute top-[20%] right-[10%] w-64 h-64 bg-accent opacity-10 rounded-full blur-3xl animate-pulse"></div>
+      <div
+        className="absolute bottom-[10%] left-[5%] w-72 h-72 bg-purple-500 opacity-10 rounded-full blur-3xl animate-pulse"
+        style={{ animationDuration: "8s" }}
+      ></div>
 
       <div className="container mx-auto px-6 lg:px-16 py-20 relative z-10">
         <div className="lg:max-w-3xl">
@@ -20,18 +26,21 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-accent font-mono text-lg md:text-xl mb-4">
-              Hello, I'm
+            <h2 className="text-accent font-mono text-lg md:text-xl mb-4 flex items-center">
+              <span className="bg-accent/10 dark:bg-accent/20 py-1 px-3 rounded-full">
+                Hello, I'm
+              </span>
             </h2>
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-primary dark:text-white mb-6"
+            className="text-4xl md:text-6xl font-bold text-primary dark:text-white mb-6 relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             Farhan Khalid
+            <span className="absolute -bottom-3 left-0 h-1 w-24 bg-accent rounded-full"></span>
           </motion.h1>
 
           <motion.div
@@ -55,7 +64,7 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <motion.p
-            className="text-gray-600 dark:text-gray-400 text-lg mb-10 max-w-2xl"
+            className="text-gray-600 dark:text-gray-400 text-lg mb-10 max-w-2xl leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -73,22 +82,76 @@ const Hero: React.FC = () => {
           >
             <a
               href="#projects"
-              className="px-8 py-3 bg-accent hover:bg-lightBlue text-white rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 shadow-md hover:shadow-lg hover:translate-y-[-2px] font-medium"
+              className="px-8 py-3 bg-accent hover:bg-lightBlue text-white rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 shadow-md hover:shadow-lg hover:translate-y-[-2px] font-medium flex items-center gap-2"
             >
-              View Projects
+              <span>View Projects</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </a>
             <a
               href="#contact"
-              className="px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-primary dark:text-white hover:bg-gray-50 hover:border-accent hover:text-accent dark:hover:bg-gray-800 dark:hover:border-accent dark:hover:text-accent rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-700 focus:ring-offset-2 font-medium hover:shadow-md"
+              className="px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-primary dark:text-white hover:bg-gray-50 hover:border-accent hover:text-accent dark:hover:bg-gray-800 dark:hover:border-accent dark:hover:text-accent rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-700 focus:ring-offset-2 font-medium hover:shadow-md flex items-center gap-2"
             >
-              Contact Me
+              <span>Contact Me</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 4L3 11L10 14M20 4L13 21L10 14M20 4L10 14"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </a>
+          </motion.div>
+
+          {/* Tech stack pills */}
+          <motion.div
+            className="mt-10 flex flex-wrap gap-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+          >
+            {[
+              "Node.js",
+              "Express",
+              "Fastify",
+              "MySQL",
+              "MongoDB",
+              "REST API",
+            ].map((tech) => (
+              <span
+                key={tech}
+                className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-xs font-medium text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700"
+              >
+                {tech}
+              </span>
+            ))}
           </motion.div>
         </div>
       </div>
 
       <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}
@@ -102,20 +165,20 @@ const Hero: React.FC = () => {
           Scroll Down
         </p>
         <motion.div
-          className="bg-gray-200 dark:bg-gray-700 rounded-full p-2 hover:bg-accent hover:text-white transition-colors"
+          className="bg-gray-200/70 backdrop-blur-sm dark:bg-gray-700/70 rounded-full p-2 hover:bg-accent hover:text-white transition-colors hover:scale-110"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
-          <FiArrowDown className="text-accent" size={24} />
+          <FiArrowDown className="text-accent hover:text-white" size={24} />
         </motion.div>
       </motion.div>
 
       {/* Backend-themed decorative elements */}
-      <div className="hidden md:block absolute right-10 top-1/3 transform -translate-y-1/2">
+      <div className="hidden md:block absolute right-10 top-1/3 transform -translate-y-1/2 z-10">
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.05, scale: 1 }}
+            animate={{ opacity: 0.07, scale: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
             className="text-5xl font-mono text-primary dark:text-white whitespace-pre"
           >
@@ -126,6 +189,13 @@ const Hero: React.FC = () => {
 }`}
           </motion.div>
         </div>
+      </div>
+
+      {/* Tech icons */}
+      <div className="absolute bottom-40 right-10 hidden md:flex flex-col gap-8 opacity-20">
+        <FiServer size={30} className="text-accent" />
+        <FiDatabase size={30} className="text-accent" />
+        <FiCode size={30} className="text-accent" />
       </div>
     </section>
   );

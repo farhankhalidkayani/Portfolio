@@ -7,6 +7,7 @@ import {
   FiGithub,
   FiSend,
   FiCheckCircle,
+  FiMapPin,
 } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
 
@@ -86,8 +87,16 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="section bg-white dark:bg-gray-800">
-      <div className="section-container">
+    <section
+      id="contact"
+      className="section bg-white dark:bg-gray-800 relative overflow-hidden"
+    >
+      {/* Background patterns */}
+      <div className="absolute inset-0 bg-circuit-pattern opacity-40"></div>
+      <div className="absolute top-0 left-0 w-40 h-40 bg-accent/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-60 h-60 bg-accent/10 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +104,13 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
-          <h2 className="section-heading mx-auto">Get In Touch</h2>
+          <h2 className="section-heading mx-auto flex flex-col items-center">
+            <span className="inline-block px-4 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+              Let's Talk
+            </span>
+            Get In Touch
+            <span className="block w-20 h-1 bg-accent mt-4 rounded-full"></span>
+          </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
             Have a project in mind or want to discuss backend development
             opportunities? Feel free to reach out through the form below or via
@@ -110,18 +125,24 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-gray-50 dark:bg-gray-900 p-8 rounded-lg shadow-sm"
+            className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl shadow-lg relative overflow-hidden border border-gray-200 dark:border-gray-700"
           >
-            <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-bl-full"></div>
+            <div className="absolute bottom-0 left-0 w-20 h-20 bg-accent/5 rounded-tr-full"></div>
+
+            <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white flex items-center">
+              <FiSend className="text-accent mr-3" />
               Send me a message
             </h3>
 
             {formStatus.submitted && (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
                 className={`mb-6 p-4 rounded-md ${
                   formStatus.success
-                    ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300"
-                    : "bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300"
+                    ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                    : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
                 }`}
               >
                 <p className="flex items-center">
@@ -132,10 +153,14 @@ const Contact: React.FC = () => {
                   )}
                   {formStatus.message}
                 </p>
-              </div>
+              </motion.div>
             )}
 
-            <form ref={formRef} onSubmit={handleSubmit}>
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="relative z-10"
+            >
               <div className="mb-4">
                 <label
                   htmlFor="name"
@@ -150,7 +175,7 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-200"
                   placeholder="John Doe"
                 />
               </div>
@@ -169,7 +194,7 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-200"
                   placeholder="your@email.com"
                 />
               </div>
@@ -188,7 +213,7 @@ const Contact: React.FC = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-200"
                   placeholder="Project Discussion"
                 />
               </div>
@@ -207,7 +232,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-accent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-200"
                   placeholder="I'd like to discuss a backend project..."
                 />
               </div>
@@ -215,7 +240,7 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-6 py-3 bg-accent hover:bg-lightBlue text-white rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 flex items-center justify-center"
+                className="w-full px-6 py-3 bg-accent hover:bg-lightBlue text-white rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 flex items-center justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
                 {loading ? (
                   <span className="flex items-center">
@@ -257,13 +282,17 @@ const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8"
           >
-            <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-lg shadow-sm mb-8">
-              <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white">
+            <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl shadow-lg mb-8 border border-gray-200 dark:border-gray-700 relative overflow-hidden">
+              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-accent/5 rounded-full"></div>
+
+              <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white flex items-center">
+                <FiMapPin className="text-accent mr-3" />
                 Contact Information
               </h3>
 
-              <div className="space-y-6">
+              <div className="space-y-6 relative z-10">
                 <ContactInfo
                   icon={<FiMail />}
                   title="Email"
@@ -295,20 +324,31 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Availability Banner */}
-            <div className="bg-accent text-white p-6 rounded-lg shadow-sm">
-              <h4 className="text-xl font-bold mb-2">Open to Opportunities</h4>
-              <p className="mb-4">
-                I'm currently available for backend development projects,
-                freelance work, or discussing new opportunities.
-              </p>
-              <a
-                href="mailto:rj.farhan4232@gmail.com?subject=Job%20Opportunity"
-                className="inline-flex items-center px-4 py-2 bg-white text-accent rounded-md hover:bg-gray-100 transition-colors"
-              >
-                <FiMail className="mr-2" />
-                Get in touch
-              </a>
-            </div>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="bg-gradient-to-r from-accent to-lightBlue text-white p-6 rounded-xl shadow-lg relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mt-10 -mr-10"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -mb-8 -ml-8"></div>
+
+              <div className="relative z-10">
+                <h4 className="text-xl font-bold mb-2">
+                  Open to Opportunities
+                </h4>
+                <p className="mb-4">
+                  I'm currently available for backend development projects,
+                  freelance work, or discussing new opportunities.
+                </p>
+                <a
+                  href="mailto:rj.farhan4232@gmail.com?subject=Job%20Opportunity"
+                  className="inline-flex items-center px-4 py-2 bg-gray-400 text-accent rounded-md hover:bg-gray-500 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 font-medium"
+                >
+                  <FiMail className="mr-2" />
+                  Get in touch
+                </a>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -330,13 +370,14 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
   link,
 }) => {
   return (
-    <a
+    <motion.a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-start group"
+      className="flex items-start group p-3 rounded-lg hover:bg-accent/5 transition-all duration-300"
+      whileHover={{ x: 5 }}
     >
-      <div className="text-accent text-xl mt-1 mr-4 group-hover:text-lightBlue transition-colors">
+      <div className="text-accent text-xl mt-1 mr-4 group-hover:text-lightBlue transition-colors bg-accent/10 p-2 rounded-full">
         {icon}
       </div>
       <div>
@@ -345,7 +386,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
           {content}
         </p>
       </div>
-    </a>
+    </motion.a>
   );
 };
 
