@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
               options={{
                 strings: [
                   "Backend Developer",
-                  "Node.js Expert",
+                  "Node.js Developer",
                   "API Architect",
                   "Database Designer",
                 ],
@@ -183,9 +183,9 @@ const Hero: React.FC = () => {
             className="text-5xl font-mono text-primary dark:text-white whitespace-pre"
           >
             {`{
-  "skill": "Node.js",
+  "skill": "Backend Development",
   "level": "Expert",
-  "years": 3
+  "years": 1
 }`}
           </motion.div>
         </div>
