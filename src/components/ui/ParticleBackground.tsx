@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { Particles } from "@tsparticles/react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { Engine } from "@tsparticles/engine";
+import type { Container, Engine } from "@tsparticles/engine";
 import { useTheme } from "next-themes";
 
 interface ParticleBackgroundProps {
@@ -13,16 +13,26 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 }) => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [init, setInit] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    initParticlesEngine(async (engine: Engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
+  const particlesLoaded = useCallback(
+    async (_container: Container | undefined) => {
+      // You can add any logic that needs to run once particles are loaded
+    },
+    []
+  );
 
-  if (!mounted) return null;
+  if (!mounted || !init) return null;
 
   const isDarkMode = theme === "dark";
 
@@ -30,7 +40,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
     <Particles
       className={`absolute inset-0 z-0 ${className || ""}`}
       id="tsparticles"
-      init={particlesInit}
+      particlesLoaded={particlesLoaded}
       options={{
         fullScreen: false,
         fpsLimit: 120,
@@ -85,7 +95,8 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
           number: {
             density: {
               enable: true,
-              value: 800,
+              width: 800,
+              height: 800,
             },
             value: 40,
           },

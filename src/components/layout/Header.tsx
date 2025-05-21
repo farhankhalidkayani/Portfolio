@@ -62,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <NavLinks />
-          <button
+          {/* <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-primary dark:text-white hover:bg-accent hover:text-white dark:hover:bg-accent transition-colors shadow-sm"
             aria-label={
@@ -74,7 +74,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
             ) : (
               <FiMoon size={20} className="text-primary" />
             )}
-          </button>
+          </button> */}
         </nav>
 
         {/* Mobile Navigation */}
