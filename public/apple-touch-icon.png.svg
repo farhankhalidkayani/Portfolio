@@ -1,0 +1,19 @@
+<!-- This is a placeholder for the apple-touch-icon.png -->
+<!-- You'll need to convert this to apple-touch-icon.png using a tool like:
+     - https://realfavicongenerator.net/
+     - https://www.favicon-generator.org/
+     - or a local image editor
+-->
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180" rx="45" fill="#4F46E5"/>
+  <g transform="translate(33.75, 33.75) scale(0.625)">
+    <rect x="33.75" y="28.125" width="112.5" height="28.125" rx="5.625" fill="#F9FAFB"/>
+    <rect x="33.75" y="70.3125" width="112.5" height="28.125" rx="5.625" fill="#F9FAFB"/>
+    <rect x="33.75" y="112.5" width="112.5" height="28.125" rx="5.625" fill="#F9FAFB"/>
+    <circle cx="56.25" cy="42.1875" r="5.625" fill="#10B981"/>
+    <circle cx="56.25" cy="84.375" r="5.625" fill="#10B981"/>
+    <circle cx="56.25" cy="126.5625" r="5.625" fill="#10B981"/>
+    <path d="M28.125 42.1875L14.0625 84.375L28.125 126.5625" stroke="#F9FAFB" stroke-width="8.4375" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M151.875 42.1875L165.938 84.375L151.875 126.5625" stroke="#F9FAFB" stroke-width="8.4375" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

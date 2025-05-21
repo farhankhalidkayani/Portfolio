@@ -1,0 +1,19 @@
+<!-- This is a placeholder for the favicon-16x16.png -->
+<!-- You'll need to convert the favicon.svg to favicon-16x16.png using a tool like:
+     - https://realfavicongenerator.net/
+     - https://www.favicon-generator.org/
+     - or a local image editor
+-->
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="16" height="16" rx="3" fill="#4F46E5"/>
+  <g transform="translate(3, 3) scale(0.625)">
+    <rect x="3" y="2.5" width="10" height="2.5" rx="0.5" fill="#F9FAFB"/>
+    <rect x="3" y="6.25" width="10" height="2.5" rx="0.5" fill="#F9FAFB"/>
+    <rect x="3" y="10" width="10" height="2.5" rx="0.5" fill="#F9FAFB"/>
+    <circle cx="5" cy="3.75" r="0.5" fill="#10B981"/>
+    <circle cx="5" cy="7.5" r="0.5" fill="#10B981"/>
+    <circle cx="5" cy="11.25" r="0.5" fill="#10B981"/>
+    <path d="M2.5 3.75L1.25 7.5L2.5 11.25" stroke="#F9FAFB" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.5 3.75L14.75 7.5L13.5 11.25" stroke="#F9FAFB" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

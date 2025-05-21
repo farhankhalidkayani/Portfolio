@@ -1,0 +1,21 @@
+/* This file contains CSS background patterns used in the portfolio */
+
+/* Grid pattern for the hero section */
+.bg-grid-pattern {
+  background-image: linear-gradient(
+      to right,
+      rgba(99, 102, 241, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Dots pattern */
+.bg-dots-pattern {
+  background-image: radial-gradient(
+    rgba(99, 102, 241, 0.2) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+}

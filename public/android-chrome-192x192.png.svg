@@ -1,0 +1,19 @@
+<!-- This is a placeholder for android-chrome-192x192.png -->
+<!-- You'll need to convert this to android-chrome-192x192.png using a tool like:
+     - https://realfavicongenerator.net/
+     - https://www.favicon-generator.org/
+     - or a local image editor
+-->
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" rx="48" fill="#4F46E5"/>
+  <g transform="translate(36, 36) scale(0.625)">
+    <rect x="36" y="30" width="120" height="30" rx="6" fill="#F9FAFB"/>
+    <rect x="36" y="75" width="120" height="30" rx="6" fill="#F9FAFB"/>
+    <rect x="36" y="120" width="120" height="30" rx="6" fill="#F9FAFB"/>
+    <circle cx="60" cy="45" r="6" fill="#10B981"/>
+    <circle cx="60" cy="90" r="6" fill="#10B981"/>
+    <circle cx="60" cy="135" r="6" fill="#10B981"/>
+    <path d="M30 45L15 90L30 135" stroke="#F9FAFB" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M162 45L177 90L162 135" stroke="#F9FAFB" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
