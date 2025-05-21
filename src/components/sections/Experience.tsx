@@ -140,7 +140,7 @@ interface ExperienceCardProps {
     description: string;
     responsibilities: {
       text: string;
-      icon: JSX.Element;
+      icon: React.ReactNode;
     }[];
     techStack: string[];
   };

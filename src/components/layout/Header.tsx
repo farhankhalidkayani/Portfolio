@@ -64,12 +64,16 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
           <NavLinks />
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-primary dark:text-white hover:bg-accent hover:text-white dark:hover:bg-accent transition-colors shadow-sm"
             aria-label={
               darkMode ? "Switch to light mode" : "Switch to dark mode"
             }
           >
-            {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+            {darkMode ? (
+              <FiSun size={20} className="text-yellow-300" />
+            ) : (
+              <FiMoon size={20} className="text-primary" />
+            )}
           </button>
         </nav>
 
@@ -77,12 +81,16 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleDarkMode}
-            className="mr-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="mr-4 p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-primary dark:text-white hover:bg-accent hover:text-white dark:hover:bg-accent transition-colors shadow-sm"
             aria-label={
               darkMode ? "Switch to light mode" : "Switch to dark mode"
             }
           >
-            {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+            {darkMode ? (
+              <FiSun size={20} className="text-yellow-300" />
+            ) : (
+              <FiMoon size={20} className="text-primary" />
+            )}
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

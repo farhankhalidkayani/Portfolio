@@ -121,20 +121,23 @@ const Projects: React.FC = () => {
         </motion.div>
 
         {/* Project filter tabs */}
-        <div className="flex flex-wrap justify-center mb-10">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              className={`px-4 py-2 mx-2 mb-3 rounded-full transition-colors ${
-                activeTab === tab.id
-                  ? "bg-accent text-white"
-                  : "bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600"
-              }`}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
+        <div className="flex flex-wrap justify-center mb-12 relative">
+          <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 rounded-full h-full -z-10"></div>
+          <div className="flex flex-wrap justify-center p-1.5 bg-gray-100 dark:bg-gray-800 rounded-full shadow-inner">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                className={`px-5 py-2 mx-1 rounded-full transition-all duration-300 ${
+                  activeTab === tab.id
+                    ? "bg-white dark:bg-gray-900 text-accent shadow-md font-medium"
+                    : "bg-transparent text-gray-600 dark:text-gray-300 hover:text-accent dark:hover:text-accent"
+                }`}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Projects grid */}

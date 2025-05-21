@@ -37,7 +37,11 @@ function App() {
   }, [darkMode]);
 
   return (
-    <div className={`min-h-screen ${darkMode ? "dark" : ""}`}>
+    <div
+      className={`min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 ${
+        darkMode ? "dark" : ""
+      }`}
+    >
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <main>
         <AnimatePresence>

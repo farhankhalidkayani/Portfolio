@@ -4,16 +4,23 @@ import { FiServer, FiDatabase, FiCode, FiGitBranch } from "react-icons/fi";
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="section bg-white dark:bg-gray-800">
-      <div className="section-container">
+    <section
+      id="about"
+      className="section bg-white dark:bg-gray-800 relative overflow-hidden"
+    >
+      <div className="absolute top-0 left-0 w-full h-40 bg-dots-pattern opacity-5"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-accent opacity-5 rounded-full blur-3xl -z-0"></div>
+
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-12"
+          className="mb-12 text-center md:text-left"
         >
-          <h2 className="section-heading">About Me</h2>
+          <h2 className="section-heading mx-auto md:mx-0">About Me</h2>
+          <div className="h-1 w-20 bg-accent mt-6 mb-10 mx-auto md:mx-0"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

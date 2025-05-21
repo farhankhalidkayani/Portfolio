@@ -7,11 +7,13 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800"
+      className="min-h-screen flex items-center relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden"
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10"></div>
+      <div className="absolute top-[20%] right-[10%] w-64 h-64 bg-accent opacity-10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-[10%] left-[5%] w-72 h-72 bg-purple-500 opacity-10 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-6 lg:px-16 py-20">
+      <div className="container mx-auto px-6 lg:px-16 py-20 relative z-10">
         <div className="lg:max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -71,13 +73,13 @@ const Hero: React.FC = () => {
           >
             <a
               href="#projects"
-              className="px-8 py-3 bg-accent hover:bg-lightBlue text-white rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              className="px-8 py-3 bg-accent hover:bg-lightBlue text-white rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 shadow-md hover:shadow-lg hover:translate-y-[-2px] font-medium"
             >
               View Projects
             </a>
             <a
               href="#contact"
-              className="px-8 py-3 border border-gray-300 dark:border-gray-700 text-primary dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-700 focus:ring-offset-2"
+              className="px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-primary dark:text-white hover:bg-gray-50 hover:border-accent hover:text-accent dark:hover:bg-gray-800 dark:hover:border-accent dark:hover:text-accent rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-700 focus:ring-offset-2 font-medium hover:shadow-md"
             >
               Contact Me
             </a>
@@ -86,15 +88,21 @@ const Hero: React.FC = () => {
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}
+        onClick={() => {
+          document
+            .getElementById("about")
+            ?.scrollIntoView({ behavior: "smooth" });
+        }}
       >
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-medium">
           Scroll Down
         </p>
         <motion.div
+          className="bg-gray-200 dark:bg-gray-700 rounded-full p-2 hover:bg-accent hover:text-white transition-colors"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >

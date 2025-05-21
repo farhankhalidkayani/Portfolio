@@ -60,8 +60,15 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="section bg-gray-50 dark:bg-gray-900">
-      <div className="section-container">
+    <section
+      id="skills"
+      className="section bg-gray-50 dark:bg-gray-900 relative overflow-hidden"
+    >
+      {/* Background elements */}
+      <div className="absolute top-40 right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-dots-pattern opacity-5"></div>
+
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,6 +77,7 @@ const Skills: React.FC = () => {
           className="mb-12 text-center"
         >
           <h2 className="section-heading mx-auto">Technical Skills</h2>
+          <div className="h-1 w-20 bg-accent mt-6 mb-6 mx-auto"></div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
             My expertise is primarily focused on backend development, database
             design, and system architecture with a strong emphasis on creating
@@ -86,11 +94,14 @@ const Skills: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              <h3 className="text-xl font-bold mb-6 text-primary dark:text-white">
-                {category.title}
-              </h3>
+              <div className="flex items-center mb-6">
+                <h3 className="text-xl font-bold text-primary dark:text-white">
+                  {category.title}
+                </h3>
+                <div className="h-0.5 bg-accent flex-grow ml-4"></div>
+              </div>
 
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {category.skills.map((skill) => (
                   <SkillBar
                     key={skill.name}
@@ -110,11 +121,15 @@ const Skills: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-20"
+          className="mt-24"
         >
-          <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white">
-            Backend Development Areas of Expertise
-          </h3>
+          <div className="flex items-center mb-8">
+            <div className="h-0.5 bg-accent flex-grow mr-4 hidden md:block"></div>
+            <h3 className="text-2xl font-bold text-primary dark:text-white text-center">
+              Backend Development Areas of Expertise
+            </h3>
+            <div className="h-0.5 bg-accent flex-grow ml-4 hidden md:block"></div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <ExpertiseCard
@@ -161,22 +176,24 @@ interface SkillBarProps {
 
 const SkillBar: React.FC<SkillBarProps> = ({ name, icon, proficiency }) => {
   return (
-    <div>
-      <div className="flex items-center mb-2">
-        <div className="text-accent text-xl mr-3">{icon}</div>
+    <div className="group">
+      <div className="flex items-center mb-3">
+        <div className="text-accent text-xl mr-3 bg-blue-50 dark:bg-blue-900/30 p-2 rounded-md group-hover:scale-110 transition-transform">
+          {icon}
+        </div>
         <div className="flex justify-between w-full">
           <span className="text-primary dark:text-white font-medium">
             {name}
           </span>
-          <span className="text-gray-500 dark:text-gray-400 text-sm">
+          <span className="text-gray-500 dark:text-gray-400 text-sm font-mono bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">
             {proficiency}%
           </span>
         </div>
       </div>
 
-      <div className="h-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+      <div className="h-2.5 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden shadow-inner">
         <motion.div
-          className="h-full bg-accent rounded-full"
+          className="h-full bg-gradient-to-r from-accent to-blue-500 dark:from-accent dark:to-blue-600 rounded-full"
           initial={{ width: 0 }}
           whileInView={{ width: `${proficiency}%` }}
           viewport={{ once: true }}
@@ -197,8 +214,9 @@ const ExpertiseCard: React.FC<ExpertiseCardProps> = ({
   description,
 }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
-      <h4 className="text-lg font-semibold mb-3 text-primary dark:text-white">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border-2 border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-accent dark:hover:border-accent/50 transition-all duration-300 group hover:-translate-y-1">
+      <div className="w-12 h-1 bg-accent mb-4 group-hover:w-16 transition-all duration-300"></div>
+      <h4 className="text-lg font-semibold mb-3 text-primary dark:text-white group-hover:text-accent dark:group-hover:text-accent transition-colors">
         {title}
       </h4>
       <p className="text-gray-600 dark:text-gray-400">{description}</p>
