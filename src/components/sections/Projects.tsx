@@ -183,7 +183,7 @@ interface ProjectCardProps {
     description: string;
     image: string;
     tags: string[];
-    techStack: { name: string; icon: JSX.Element }[];
+    techStack: { name: string; icon: React.ReactNode }[];
     keyFeatures: string[];
     architecture: string;
     github: string;
