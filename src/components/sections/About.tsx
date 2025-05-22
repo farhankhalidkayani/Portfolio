@@ -32,12 +32,12 @@ const About: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white">
-              Backend Developer with Focus on System Architecture
+              Backend Engineer with Focus on System Architecture
             </h3>
 
             <div className="space-y-4 text-gray-600 dark:text-gray-300">
               <p>
-                I'm a skilled Backend Developer currently pursuing a Bachelor of
+                I'm a skilled Backend Engineer currently pursuing a Bachelor of
                 Science in Information Technology (BSIT) at the University of
                 Education (2023-2027), while building my career in software
                 development.

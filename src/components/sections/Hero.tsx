@@ -52,10 +52,10 @@ const Hero: React.FC = () => {
             <Typewriter
               options={{
                 strings: [
-                  "Backend Developer",
-                  "Node.js Developer",
-                  "API Architect",
-                  "Database Designer",
+                  "Backend Engineer",
+                  "Node.js",
+                  "REST API",
+                  "Database Management",
                 ],
                 autoStart: true,
                 loop: true,
@@ -183,8 +183,8 @@ const Hero: React.FC = () => {
             className="text-5xl font-mono text-primary dark:text-white whitespace-pre"
           >
             {`{
-  "skill": "Backend Development",
-  "level": "Expert",
+  "skill": "Backend Engineering",
+  "level": "Intermediate",
   "years": 1
 }`}
           </motion.div>
