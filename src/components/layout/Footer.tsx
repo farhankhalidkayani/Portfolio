@@ -133,15 +133,6 @@ const Footer: React.FC = () => {
           >
             &copy; {currentYear} Farhan Khalid. All rights reserved.
           </motion.p>
-
-          <motion.p
-            className="text-gray-600 dark:text-gray-400 text-sm mt-2 md:mt-0 flex items-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
-          >
-            Built with React, TypeScript, TailwindCSS & Framer Motion
-          </motion.p>
         </div>
 
         {/* Back to top button */}
