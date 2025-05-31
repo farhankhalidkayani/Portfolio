@@ -36,7 +36,7 @@ const Projects: React.FC = () => {
       architecture:
         "Built with a modular architecture using the MVC pattern. Implemented RESTful API endpoints with proper validation, error handling, and response formatting. The database schema includes optimized table relationships for businesses, customers, and services.",
       github: "https://github.com/farhankhalidkayani",
-      liveDemo: "#",
+      liveDemo: "https://app.befer.co",
     },
     {
       id: 2,
@@ -60,7 +60,7 @@ const Projects: React.FC = () => {
       architecture:
         "Built with a focus on performance and bandwidth efficiency. Implemented specialized caching strategies to reduce mobile data usage. Created endpoints optimized for intermittent connectivity scenarios.",
       github: "https://github.com/farhankhalidkayani",
-      liveDemo: "#",
+      liveDemo: "https://apps.apple.com/pk/app/befer/id6743770580",
     },
     {
       id: 3,
