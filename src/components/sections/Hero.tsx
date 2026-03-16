@@ -52,10 +52,10 @@ const Hero: React.FC = () => {
             <Typewriter
               options={{
                 strings: [
-                  "Backend Engineer",
-                  "Node.js",
-                  "REST API",
-                  "Database Management",
+                  "Software Engineer",
+                  "AI Integrations",
+                  "Scalable Systems",
+                  "Backend",
                 ],
                 autoStart: true,
                 loop: true,
@@ -69,9 +69,12 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            I specialize in building robust backend systems, integrating
-            third-party services, designing efficient databases, and creating
-            scalable APIs with Node.js, Express, and Fastify.
+            Backend Software Engineer with hands-on experience building
+            multi-tenant CRM platforms, AI-powered automation systems, and
+            high-integration backend architectures. Experienced in scalable
+            APIs, workflow engines, real-time systems, and AI-driven lead
+            engagement—with production integrations across Stripe, Salesforce,
+            Meta APIs, Twilio, and OpenAI.
           </motion.p>
 
           <motion.div
@@ -133,11 +136,11 @@ const Hero: React.FC = () => {
           >
             {[
               "Node.js",
-              "Express",
+              "Python",
               "Fastify",
+              "FastAPI",
               "MySQL",
-              "MongoDB",
-              "REST API",
+              "Redis",
             ].map((tech) => (
               <span
                 key={tech}
@@ -184,8 +187,8 @@ const Hero: React.FC = () => {
           >
             {`{
   "skill": "Backend Engineering",
-  "level": "Intermediate",
-  "years": 1
+  "focus": "AI Integrations",
+  "stack": "Node.js | Python"
 }`}
           </motion.div>
         </div>

@@ -4,8 +4,7 @@ import {
   FaNode,
   FaServer,
   FaGitAlt,
-  FaDocker,
-  FaJs,
+  FaDatabase,
   FaPuzzlePiece,
   FaTools,
 } from "react-icons/fa";
@@ -13,48 +12,58 @@ import {
   SiExpress,
   SiFastify,
   SiMysql,
-  SiAmazon,
   SiMongodb,
   SiPostgresql,
   SiRedis,
+  SiPython,
+  SiFastapi,
+  SiTypescript,
+  SiJavascript,
+  SiStripe,
+  SiOpenai,
 } from "react-icons/si";
 
 const Skills: React.FC = () => {
-  // Group skills by category
+  // Group skills by category (aligned with resume)
   const skillCategories = [
     {
-      title: "Backend Frameworks",
+      title: "Languages",
       skills: [
-        { name: "Node.js", icon: <FaNode />, proficiency: 90 },
+        { name: "JavaScript", icon: <SiJavascript />, proficiency: 95 },
+        { name: "TypeScript", icon: <SiTypescript />, proficiency: 90 },
+        { name: "Python", icon: <SiPython />, proficiency: 85 },
+        { name: "SQL", icon: <FaDatabase />, proficiency: 90 },
+      ],
+    },
+    {
+      title: "Backend & APIs",
+      skills: [
+        { name: "Node.js", icon: <FaNode />, proficiency: 95 },
+        { name: "Fastify", icon: <SiFastify />, proficiency: 90 },
         { name: "Express", icon: <SiExpress />, proficiency: 90 },
-        { name: "Fastify", icon: <SiFastify />, proficiency: 85 },
+        { name: "FastAPI", icon: <SiFastapi />, proficiency: 85 },
+        { name: "REST APIs", icon: <FaServer />, proficiency: 95 },
+        { name: "WebSockets", icon: <FaPuzzlePiece />, proficiency: 85 },
+        { name: "JWT & OAuth", icon: <FaTools />, proficiency: 90 },
       ],
     },
     {
       title: "Databases",
       skills: [
         { name: "MySQL", icon: <SiMysql />, proficiency: 90 },
-        { name: "MongoDB", icon: <SiMongodb />, proficiency: 75 },
-        { name: "PostgreSQL", icon: <SiPostgresql />, proficiency: 70 },
-        { name: "Redis", icon: <SiRedis />, proficiency: 65 },
+        { name: "MongoDB", icon: <SiMongodb />, proficiency: 80 },
+        { name: "Redis", icon: <SiRedis />, proficiency: 85 },
+        { name: "PostgreSQL", icon: <SiPostgresql />, proficiency: 75 },
       ],
     },
     {
-      title: "API Integration",
+      title: "Integrations & Tools",
       skills: [
-        { name: "RESTful APIs", icon: <FaServer />, proficiency: 95 },
-        { name: "Payment Gateways", icon: <FaPuzzlePiece />, proficiency: 85 },
-        { name: "Authentication", icon: <FaTools />, proficiency: 90 },
-        { name: "Third-Party Services", icon: <FaTools />, proficiency: 88 },
-      ],
-    },
-    {
-      title: "DevOps & Tools",
-      skills: [
-        { name: "Git", icon: <FaGitAlt />, proficiency: 85 },
-        { name: "Docker", icon: <FaDocker />, proficiency: 75 },
-        { name: "AWS Services", icon: <SiAmazon />, proficiency: 70 },
-        { name: "JavaScript", icon: <FaJs />, proficiency: 95 },
+        { name: "Stripe", icon: <SiStripe />, proficiency: 88 },
+        { name: "OpenAI API", icon: <SiOpenai />, proficiency: 85 },
+        { name: "Twilio / SendGrid", icon: <FaPuzzlePiece />, proficiency: 85 },
+        { name: "Git & GitHub", icon: <FaGitAlt />, proficiency: 95 },
+        { name: "Sentry & Monitoring", icon: <FaTools />, proficiency: 80 },
       ],
     },
   ];
@@ -99,9 +108,10 @@ const Skills: React.FC = () => {
             ></div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
-            My expertise is primarily focused on backend development, database
-            design, and system architecture with a strong emphasis on creating
-            robust and scalable applications.
+            Languages: JavaScript, TypeScript, Python, SQL. Backend: Node.js,
+            Fastify, Express, FastAPI. Multi-tenant systems, RBAC, workflow
+            engines, and integrations with Stripe, Salesforce, Meta APIs,
+            Twilio, and OpenAI.
           </p>
         </motion.div>
 
@@ -173,8 +183,8 @@ const Skills: React.FC = () => {
             />
 
             <ExpertiseCard
-              title="Real-time Systems"
-              description="Building real-time features with WebSockets, handling events, and implementing notification systems."
+              title="Multi-tenant & RBAC"
+              description="Designing multi-tenant systems, role-based access control, workflow engines, and event-driven architectures."
             />
 
             <ExpertiseCard

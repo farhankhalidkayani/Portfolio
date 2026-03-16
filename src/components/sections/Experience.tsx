@@ -6,67 +6,103 @@ const Experience: React.FC = () => {
   // Define the work experiences
   const experiences = [
     {
-      title: "Associate Software Engineer",
+      title: "Technology Consultant",
       company: "Hatzs Dimensions",
-      period: "February 2025 - Present",
+      period: "Nov 2025 – Present",
       description:
-        "Handling backend development for multiple products with a focus on scalable API design and complex integrations.",
+        "Serve as technical SME in client discovery and architecture discussions for CRM and AI-driven platforms.",
       responsibilities: [
         {
-          text: "Built backend for Befer Mobile application with push notifications and in-app purchases",
+          text: "Design backend architectures for automation systems, CRM platforms, and AI-powered lead engagement tools",
           icon: <FiServer />,
         },
         {
-          text: "Developed backend codebase for DealerAI IQ, a CRM for car dealerships",
+          text: "Leverage AI-assisted development workflows to rapidly prototype and ship MVPs across backend and frontend layers",
           icon: <FiCode />,
         },
         {
-          text: "Designed and managed database architecture for multiple applications",
+          text: "Demonstrate tech-stack agnostic engineering across Node.js, Python, Next.js, and Salesforce",
           icon: <FiDatabase />,
         },
         {
-          text: "Integrated advanced features like video chat, audio calls, and AI calling systems",
+          text: "Built custom e-signature workflow integrated into Salesforce, replacing a third-party document signing platform",
           icon: <FiActivity />,
         },
         {
-          text: "Implemented authentication systems and complex CRUD workflows",
+          text: "Collaborate directly with clients and product teams to gather requirements and design scalable solutions",
           icon: <FiCode />,
         },
       ],
       techStack: [
         "Node.js",
-        "Express",
-        "Fastify",
-        "MySQL",
-        "JWT",
-        "WebSockets",
+        "Python",
+        "Next.js",
+        "Salesforce",
+        "REST APIs",
+        "AI/ML",
       ],
     },
     {
-      title: "Development Intern",
+      title: "Software Engineer",
       company: "Hatzs Dimensions",
-      period: "November 2024 - January 2025",
+      period: "Jul 2025 – Nov 2025",
       description:
-        "Contributed to backend development for AI-based CRM platform while learning industry best practices.",
+        "Developed backend services and APIs for production applications using Node.js and MySQL.",
       responsibilities: [
         {
-          text: "Built backend for AI-based CRM platform called Befer",
-          icon: <FiServer />,
-        },
-        {
-          text: "Integrated third-party services, payment gateways, email and SMS APIs",
-          icon: <FiActivity />,
-        },
-        {
-          text: "Implemented Google sign-in and AI calling features",
+          text: "Implemented JWT authentication systems and OAuth integrations",
           icon: <FiCode />,
         },
         {
-          text: "Designed and managed the database architecture",
+          text: "Built integrations with payment platforms, messaging APIs, and external CRM systems",
+          icon: <FiActivity />,
+        },
+        {
+          text: "Developed backend features supporting lead management, booking systems, notifications, and automation workflows",
+          icon: <FiServer />,
+        },
+      ],
+      techStack: ["Node.js", "MySQL", "JWT", "OAuth", "REST APIs"],
+    },
+    {
+      title: "Associate Software Engineer",
+      company: "Hatzs Dimensions",
+      period: "Jan 2025 – Jul 2025",
+      description:
+        "Contributed to backend development of Befer AI, a business management platform supporting bookings, leads, and payments.",
+      responsibilities: [
+        {
+          text: "Implemented secure authentication systems including Google OAuth and JWT authorization",
+          icon: <FiCode />,
+        },
+        {
+          text: "Integrated Stripe payments, Google Calendar scheduling, and email/SMS notification systems",
+          icon: <FiActivity />,
+        },
+        {
+          text: "Developed backend modules for reminders, automated workflows, and media uploads",
+          icon: <FiServer />,
+        },
+      ],
+      techStack: ["Node.js", "Stripe", "OAuth", "JWT", "REST APIs"],
+    },
+    {
+      title: "Backend Intern",
+      company: "Hatzs Dimensions",
+      period: "Nov 2024 – Jan 2025",
+      description:
+        "Assisted in backend API development, debugging, and integration tasks using Node.js and MySQL.",
+      responsibilities: [
+        {
+          text: "Backend API development and debugging for production applications",
+          icon: <FiServer />,
+        },
+        {
+          text: "Integration tasks and database operations with Node.js and MySQL",
           icon: <FiDatabase />,
         },
       ],
-      techStack: ["Node.js", "Express", "MySQL", "OAuth", "REST APIs"],
+      techStack: ["Node.js", "MySQL", "REST APIs"],
     },
   ];
 
@@ -89,8 +125,8 @@ const Experience: React.FC = () => {
           <h2 className="section-heading mx-auto">Work Experience</h2>
           <div className="h-1 w-24 bg-accent mt-6 mb-6 mx-auto"></div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
-            My professional journey in backend development, focusing on
-            server-side architecture, API development, and database design.
+            From Backend Intern to Technology Consultant at Hatzs Dimensions—building
+            multi-tenant CRMs, AI-powered platforms, and scalable backend systems.
           </p>
         </motion.div>
 
@@ -125,12 +161,11 @@ const Experience: React.FC = () => {
               Backend Development Philosophy
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl">
-              Throughout my career, I've focused on building reliable,
-              maintainable, and scalable backend systems. I emphasize clean code
-              principles, comprehensive documentation, and thoughtful
-              architecture decisions. My approach combines best practices in
-              security, performance optimization, and database design to create
-              robust solutions that can grow with business needs.
+              I focus on building reliable, maintainable, and scalable backend
+              systems—combining clean code, security best practices, and
+              thoughtful architecture. Tech-stack agnostic with production
+              experience across Node.js, Python, and Salesforce to deliver
+              solutions that grow with business needs.
             </p>
           </div>
         </motion.div>

@@ -36,8 +36,7 @@ const Footer: React.FC = () => {
               Farhan<span className="text-accent">.</span>Khalid
             </h3>
             <p className="mt-2 text-gray-600 dark:text-gray-400">
-              Backend Engineer specializing in Node.js, Express, Fastify, and
-              MySQL
+              Software Engineer | AI Integrations | Scalable Systems | Backend
             </p>
           </motion.div>
 

@@ -32,32 +32,29 @@ const About: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white">
-              Backend Engineer with Focus on System Architecture
+              Professional Summary
             </h3>
 
             <div className="space-y-4 text-gray-600 dark:text-gray-300">
               <p>
-                I'm a skilled Backend Engineer currently pursuing a Bachelor of
-                Science in Information Technology (BSIT) at the University of
-                Education (2023-2027), while building my career in software
-                development.
+                Backend Software Engineer with hands-on experience building
+                multi-tenant CRM platforms, AI-powered automation systems, and
+                high-integration backend architectures. Experienced in designing
+                scalable APIs, workflow engines, real-time communication
+                systems, and AI-driven lead engagement platforms.
               </p>
 
               <p>
-                With expertise in{" "}
-                <strong>Node.js, Express, Fastify, and MySQL</strong>, I
-                specialize in developing robust backend systems for CRM
-                platforms, implementing complex integrations including payment
-                gateways, authentication systems, AI calling features, push
-                notifications, and in-app purchases.
+                Strong background in <strong>Node.js and Python</strong> with
+                production integrations across Stripe, Salesforce, Meta APIs,
+                Twilio, and OpenAI. Regularly participate in client architecture
+                discussions as a technical SME and known for rapidly designing
+                and shipping solutions using AI-assisted engineering workflows.
               </p>
 
               <p>
-                My strengths include building scalable APIs, managing database
-                operations, and creating efficient server-side applications. I'm
-                passionate about creating clean, maintainable code and
-                continuously improving my skills to deliver high-quality
-                software solutions.
+                Tech-stack agnostic engineer capable of adapting quickly to new
+                technologies to deliver production systems.
               </p>
 
               <div className="pt-4">
@@ -70,9 +67,6 @@ const About: React.FC = () => {
                   </p>
                   <p className="text-gray-500 dark:text-gray-400">
                     University of Education
-                  </p>
-                  <p className="text-gray-500 dark:text-gray-400">
-                    2023 - 2027 (Expected)
                   </p>
                 </div>
               </div>
@@ -118,31 +112,30 @@ const About: React.FC = () => {
 
             <div className="mt-10 bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
               <h4 className="text-lg font-semibold mb-4 text-primary dark:text-white">
-                Certifications
+                Engineering Highlights
               </h4>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <div className="h-2 w-2 mt-2 rounded-full bg-accent"></div>
-                  <div className="ml-3">
-                    <p className="font-medium">
-                      CS50P: Introduction to Programming with Python
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Harvard University
-                    </p>
-                  </div>
+                  <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
+                  <p className="ml-3 text-gray-600 dark:text-gray-300">
+                    Led development of multiple major platform features and took
+                    ownership of production systems.
+                  </p>
                 </div>
-
                 <div className="flex items-start">
-                  <div className="h-2 w-2 mt-2 rounded-full bg-accent"></div>
-                  <div className="ml-3">
-                    <p className="font-medium">
-                      CS50x: Introduction to Computer Science
-                    </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Harvard University
-                    </p>
-                  </div>
+                  <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
+                  <p className="ml-3 text-gray-600 dark:text-gray-300">
+                    Mentored multiple backend interns who successfully
+                    transitioned into full-time engineering roles.
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
+                  <p className="ml-3 text-gray-600 dark:text-gray-300">
+                    Known for rapid problem solving, debugging production issues,
+                    and designing solutions under tight timelines. Served as
+                    on-call engineer for production systems.
+                  </p>
                 </div>
               </div>
             </div>

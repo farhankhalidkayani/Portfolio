@@ -7,7 +7,7 @@ import {
   FiDatabase,
   FiKey,
 } from "react-icons/fi";
-import { SiNodedotjs, SiExpress, SiFastify, SiMysql } from "react-icons/si";
+import { SiNodedotjs, SiExpress, SiFastify, SiMysql, SiPython, SiFastapi } from "react-icons/si";
 
 const Projects: React.FC = () => {
   const [activeTab, setActiveTab] = useState("all");
@@ -16,10 +16,34 @@ const Projects: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: "Befer CRM Platform",
+      title: "DealerIQ AI",
       description:
-        "A comprehensive CRM for blue-collar businesses with integrated payment processing, authentication, and AI-driven features.",
-      image: "/project-befer-crm.jpg", // You'll need to add this image to your project
+        "Multi-tenant automotive CRM integrating AI voice, chat, and messaging workflows. Processes ~400 incoming leads per day per client with automated AI engagement across calls, SMS, email, and social channels.",
+      image: "/project-dealer-ai.jpg",
+      tags: ["backend", "crm", "api", "architecture"],
+      techStack: [
+        { name: "Node.js", icon: <SiNodedotjs /> },
+        { name: "Fastify", icon: <SiFastify /> },
+        { name: "MySQL", icon: <SiMysql /> },
+      ],
+      keyFeatures: [
+        "IQ Chat: unified thread from Instagram, Messenger, SMS, Email",
+        "RBAC, audit trails, e-sign document builder, workflow automation",
+        "Redis caching; WebSockets for real-time notifications",
+        "Background jobs for reminders, workflow triggers, task expiration",
+        "Integrations: Salesforce, Stripe, Twilio, SendGrid, Meta, OpenAI, KBB, CarGurus, Carfax",
+      ],
+      architecture:
+        "Layered design: Routes → Controllers → Services → Repositories → Validators. Heavy chat queries optimized from ~45s to ~3s. Contributing to refactoring with queues, event-driven architecture, and microservices.",
+      github: "https://github.com/farhankhalidkayani",
+      liveDemo: "https://www.dealeriq.ai/",
+    },
+    {
+      id: 2,
+      title: "Befer AI",
+      description:
+        "Business management platform with backend APIs supporting bookings, leads, orders, payments, and marketing automation. 60+ service modules with extensive integrations including Stripe, QuickBooks, Google APIs, and OpenAI.",
+      image: "/project-befer-crm.jpg",
       tags: ["backend", "crm", "api"],
       techStack: [
         { name: "Node.js", icon: <SiNodedotjs /> },
@@ -27,62 +51,55 @@ const Projects: React.FC = () => {
         { name: "MySQL", icon: <SiMysql /> },
       ],
       keyFeatures: [
-        "RESTful API architecture",
-        "Payment gateway integration",
-        "Email and SMS notifications",
-        "AI calling system",
+        "Bookings, leads, orders, payments, marketing automation",
+        "Stripe, QuickBooks, Google APIs, OpenAI integrations",
+        "60+ service modules",
         "OAuth & JWT authentication",
       ],
       architecture:
-        "Built with a modular architecture using the MVC pattern. Implemented RESTful API endpoints with proper validation, error handling, and response formatting. The database schema includes optimized table relationships for businesses, customers, and services.",
+        "Modular backend with RESTful APIs, validation, and error handling. Database schema optimized for businesses, customers, and services.",
       github: "https://github.com/farhankhalidkayani",
-      liveDemo: "https://app.befer.co",
-    },
-    {
-      id: 2,
-      title: "Befer Mobile Backend",
-      description:
-        "Backend services supporting the mobile version of the Befer CRM platform with specialized endpoints for mobile functionality.",
-      image: "/project-befer-mobile.jpg", // You'll need to add this image to your project
-      tags: ["backend", "mobile", "api"],
-      techStack: [
-        { name: "Node.js", icon: <SiNodedotjs /> },
-        { name: "Express", icon: <SiExpress /> },
-        { name: "MySQL", icon: <SiMysql /> },
-      ],
-      keyFeatures: [
-        "Push notification service",
-        "In-app purchase handling",
-        "Mobile auth flows",
-        "Offline data synchronization",
-        "Optimized API responses for mobile",
-      ],
-      architecture:
-        "Built with a focus on performance and bandwidth efficiency. Implemented specialized caching strategies to reduce mobile data usage. Created endpoints optimized for intermittent connectivity scenarios.",
-      github: "https://github.com/farhankhalidkayani",
-      liveDemo: "https://apps.apple.com/pk/app/befer/id6743770580",
+      liveDemo: "https://befer.co/",
     },
     {
       id: 3,
-      title: "DealerAI IQ",
+      title: "Social Bear AI (MVP)",
       description:
-        "A CRM system for automotive dealers, featuring AI-powered customer insights and advanced communication tools.",
-      image: "/project-dealer-ai.jpg", // You'll need to add this image to your project
-      tags: ["backend", "crm", "architecture"],
+        "FastAPI backend for social media automation: Instagram and Facebook messaging, automated AI replies, and comment moderation.",
+      image: "/project-befer-mobile.jpg",
+      tags: ["backend", "api"],
       techStack: [
-        { name: "Node.js", icon: <SiNodedotjs /> },
-        { name: "Fastify", icon: <SiFastify /> },
-        { name: "MySQL", icon: <SiMysql /> },
+        { name: "Python", icon: <SiPython /> },
+        { name: "FastAPI", icon: <SiFastapi /> },
       ],
       keyFeatures: [
-        "Real-time video chat integration",
-        "Audio call system",
-        "Complex CRUD operations",
-        "AI calling integration",
-        "Database design optimization",
+        "Instagram & Facebook message handling",
+        "Automated AI replies",
+        "Comment moderation",
       ],
       architecture:
-        "Implemented using Fastify for improved performance. Designed a complex database schema to represent vehicle inventory, customer relationships, and sales processes. Created a flexible authentication system with role-based access control.",
+        "FastAPI-based backend for social media automation and AI-driven engagement.",
+      github: "https://github.com/farhankhalidkayani",
+      liveDemo: "#",
+    },
+    {
+      id: 4,
+      title: "Social Hub AI (MVP)",
+      description:
+        "Backend system for email and SMS marketing campaigns with audience targeting and automated messaging workflows.",
+      image: "/project-befer-mobile.jpg",
+      tags: ["backend", "api"],
+      techStack: [
+        { name: "Node.js", icon: <SiNodedotjs /> },
+        { name: "Express", icon: <SiExpress /> },
+      ],
+      keyFeatures: [
+        "Email and SMS marketing campaigns",
+        "Audience targeting",
+        "Automated messaging workflows",
+      ],
+      architecture:
+        "Backend services for campaign management and multi-channel messaging.",
       github: "https://github.com/farhankhalidkayani",
       liveDemo: "#",
     },
