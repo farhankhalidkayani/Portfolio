@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll } from "framer-motion";
 import { FiServer, FiDatabase, FiCode, FiActivity } from "react-icons/fi";
 
 const Experience: React.FC = () => {
@@ -9,6 +9,7 @@ const Experience: React.FC = () => {
       title: "Technology Consultant",
       company: "Hatzs Dimensions",
       period: "Nov 2025 – Present",
+      current: true,
       description:
         "Serve as technical SME in client discovery and presales conversations, translating business requirements into CRM, AI, and integration architectures.",
       responsibilities: [
@@ -136,22 +137,7 @@ const Experience: React.FC = () => {
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gray-200 dark:bg-gray-700"></div>
-
-          {/* Experience cards */}
-          <div className="space-y-12">
-            {experiences.map((experience, idx) => (
-              <ExperienceCard
-                key={experience.title}
-                experience={experience}
-                index={idx}
-                isLeft={idx % 2 === 0}
-              />
-            ))}
-          </div>
-        </div>
+        <TimelineTrack experiences={experiences} />
 
         {/* Backend expertise highlight */}
         <motion.div
@@ -179,18 +165,55 @@ const Experience: React.FC = () => {
   );
 };
 
+interface ExperienceItem {
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+  current?: boolean;
+  responsibilities: {
+    text: string;
+    icon: React.ReactNode;
+  }[];
+  techStack: string[];
+}
+
+const TimelineTrack: React.FC<{ experiences: ExperienceItem[] }> = ({
+  experiences,
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  return (
+    <div ref={containerRef} className="relative">
+      {/* Timeline line: static track + scroll-driven gradient fill */}
+      <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        <motion.div
+          className="w-full bg-gradient-to-b from-accent via-blue-500 to-purple-500 rounded-full"
+          style={{ scaleY: scrollYProgress, transformOrigin: "top", height: "100%" }}
+        />
+      </div>
+
+      {/* Experience cards */}
+      <div className="space-y-12">
+        {experiences.map((experience, idx) => (
+          <ExperienceCard
+            key={experience.title}
+            experience={experience}
+            index={idx}
+            isLeft={idx % 2 === 0}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 interface ExperienceCardProps {
-  experience: {
-    title: string;
-    company: string;
-    period: string;
-    description: string;
-    responsibilities: {
-      text: string;
-      icon: React.ReactNode;
-    }[];
-    techStack: string[];
-  };
+  experience: ExperienceItem;
   index: number;
   isLeft: boolean;
 }
@@ -203,7 +226,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   return (
     <div className="relative">
       {/* Timeline dot */}
-      <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full bg-accent border-4 border-white dark:border-gray-900 z-10"></div>
+      <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 z-10">
+        {experience.current && (
+          <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-60"></span>
+        )}
+        <div className="relative w-5 h-5 rounded-full bg-accent border-4 border-white dark:border-gray-900"></div>
+      </div>
 
       {/* Timeline card */}
       <motion.div
@@ -215,12 +243,26 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+        <div
+          className={`bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border ${
+            experience.current
+              ? "border-accent/50 ring-1 ring-accent/20"
+              : "border-gray-200 dark:border-gray-700"
+          }`}
+        >
           {/* Experience header */}
           <div className="mb-4">
-            <h3 className="text-xl font-bold text-primary dark:text-white">
-              {experience.title}
-            </h3>
+            <div className="flex items-center gap-2 flex-wrap">
+              <h3 className="text-xl font-bold text-primary dark:text-white">
+                {experience.title}
+              </h3>
+              {experience.current && (
+                <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  Current
+                </span>
+              )}
+            </div>
             <div className="flex justify-between items-center mt-1">
               <p className="text-accent font-medium">{experience.company}</p>
               <p className="text-sm text-gray-500 dark:text-gray-400">

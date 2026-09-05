@@ -8,9 +8,19 @@ interface HeaderProps {
   setDarkMode: (value: boolean) => void;
 }
 
+const SECTION_IDS = [
+  "home",
+  "about",
+  "skills",
+  "projects",
+  "experience",
+  "contact",
+];
+
 const Header: React.FC<HeaderProps> = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +36,31 @@ const Header: React.FC<HeaderProps> = () => {
     };
   }, [scrolled]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <motion.header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white dark:bg-gray-900 shadow-lg py-2"
+          ? "backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-sm border-b border-gray-200/60 dark:border-gray-800/60 py-3"
           : "bg-transparent py-6"
       }`}
       initial={{ y: -100 }}
@@ -42,6 +72,7 @@ const Header: React.FC<HeaderProps> = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
+          className="flex flex-col leading-none"
         >
           <ScrollLink
             to="home"
@@ -53,41 +84,34 @@ const Header: React.FC<HeaderProps> = () => {
           >
             Farhan<span className="text-accent">.</span>Khalid
           </ScrollLink>
+          <span className="hidden sm:block text-[10px] font-mono text-gray-400 dark:text-gray-500 tracking-[0.15em] mt-0.5">
+            BACKEND &amp; AI ENGINEER
+          </span>
         </motion.div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <NavLinks />
-          {/* <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-primary dark:text-white hover:bg-accent hover:text-white dark:hover:bg-accent transition-colors shadow-sm"
-            aria-label={
-              darkMode ? "Switch to light mode" : "Switch to dark mode"
-            }
+        <nav className="hidden md:flex items-center gap-2">
+          <NavLinks activeSection={activeSection} />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
           >
-            {darkMode ? (
-              <FiSun size={20} className="text-yellow-300" />
-            ) : (
-              <FiMoon size={20} className="text-primary" />
-            )}
-          </button> */}
+            <ScrollLink
+              to="contact"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              className="ml-4 inline-flex items-center px-4 py-2 rounded-full border border-accent text-accent text-sm font-medium hover:bg-accent hover:text-white transition-colors cursor-pointer"
+            >
+              Let's Talk
+            </ScrollLink>
+          </motion.div>
         </nav>
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center">
-          {/* <button
-            onClick={toggleDarkMode}
-            className="mr-4 p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-primary dark:text-white hover:bg-accent hover:text-white dark:hover:bg-accent transition-colors shadow-sm"
-            aria-label={
-              darkMode ? "Switch to light mode" : "Switch to dark mode"
-            }
-          >
-            {darkMode ? (
-              <FiSun size={20} className="text-yellow-300" />
-            ) : (
-              <FiMoon size={20} className="text-primary" />
-            )}
-          </button> */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2"
@@ -107,7 +131,11 @@ const Header: React.FC<HeaderProps> = () => {
           exit={{ opacity: 0, y: -20 }}
         >
           <nav className="flex flex-col py-4">
-            <NavLinks mobile setMobileMenuOpen={setMobileMenuOpen} />
+            <NavLinks
+              mobile
+              setMobileMenuOpen={setMobileMenuOpen}
+              activeSection={activeSection}
+            />
           </nav>
         </motion.div>
       )}
@@ -118,19 +146,21 @@ const Header: React.FC<HeaderProps> = () => {
 interface NavLinksProps {
   mobile?: boolean;
   setMobileMenuOpen?: (value: boolean) => void;
+  activeSection: string;
 }
 
 const NavLinks: React.FC<NavLinksProps> = ({
   mobile = false,
   setMobileMenuOpen,
+  activeSection,
 }) => {
   const links = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Experience", href: "#experience" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "home", num: "00" },
+    { name: "About", href: "about", num: "01" },
+    { name: "Skills", href: "skills", num: "02" },
+    { name: "Projects", href: "projects", num: "03" },
+    { name: "Experience", href: "experience", num: "04" },
+    { name: "Contact", href: "contact", num: "05" },
   ];
 
   const handleClick = () => {
@@ -141,31 +171,52 @@ const NavLinks: React.FC<NavLinksProps> = ({
 
   return (
     <>
-      {links.map((link, index) => (
-        <motion.div
-          key={link.name}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 * index }}
-          className="inline-block"
-        >
-          <ScrollLink
-            to={link.href.substring(1)} // Remove the # from href
-            spy={true}
-            smooth={true}
-            offset={-70} // Adjust based on header height
-            duration={500}
-            className={`font-medium text-gray-600 hover:text-accent dark:text-gray-300 dark:hover:text-accent transition-colors cursor-pointer ${
-              mobile
-                ? "py-3 px-6 block border-b border-gray-100 dark:border-gray-700"
-                : ""
-            }`}
-            onClick={handleClick}
+      {links.map((link, index) => {
+        const isActive = activeSection === link.href;
+        return (
+          <motion.div
+            key={link.name}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 * index }}
+            className={mobile ? "" : "inline-block"}
           >
-            {link.name}
-          </ScrollLink>
-        </motion.div>
-      ))}
+            <ScrollLink
+              to={link.href}
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}
+              className={`relative font-medium text-sm transition-colors cursor-pointer ${
+                mobile
+                  ? `py-3 px-6 flex items-center gap-2 border-b border-gray-100 dark:border-gray-700 ${
+                      isActive
+                        ? "text-accent"
+                        : "text-gray-600 dark:text-gray-300"
+                    }`
+                  : `px-3 py-2 flex items-center gap-1.5 rounded-full ${
+                      isActive
+                        ? "text-accent"
+                        : "text-gray-600 hover:text-accent dark:text-gray-300 dark:hover:text-accent"
+                    }`
+              }`}
+              onClick={handleClick}
+            >
+              <span className="font-mono text-[11px] text-accent/70">
+                {link.num}.
+              </span>
+              {link.name}
+              {isActive && !mobile && (
+                <motion.span
+                  layoutId="nav-active-pill"
+                  className="absolute inset-0 -z-10 rounded-full bg-accent/10 dark:bg-accent/15"
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                />
+              )}
+            </ScrollLink>
+          </motion.div>
+        );
+      })}
     </>
   );
 };

@@ -32,54 +32,54 @@ const Skills: React.FC = () => {
     {
       title: "Languages",
       skills: [
-        { name: "JavaScript", icon: <SiJavascript />, proficiency: 95 },
-        { name: "SQL", icon: <FaDatabase />, proficiency: 90 },
-        { name: "Python", icon: <SiPython />, proficiency: 85 },
-        { name: "TypeScript", icon: <SiTypescript />, proficiency: 75 },
+        { name: "JavaScript", icon: <SiJavascript /> },
+        { name: "SQL", icon: <FaDatabase /> },
+        { name: "Python", icon: <SiPython /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
       ],
     },
     {
       title: "Backend & APIs",
       skills: [
-        { name: "Node.js", icon: <FaNode />, proficiency: 95 },
-        { name: "Express", icon: <SiExpress />, proficiency: 90 },
-        { name: "Fastify", icon: <SiFastify />, proficiency: 85 },
-        { name: "REST APIs", icon: <FaServer />, proficiency: 95 },
-        { name: "FastAPI", icon: <SiFastapi />, proficiency: 80 },
-        { name: "JWT & OAuth", icon: <FaTools />, proficiency: 90 },
+        { name: "Node.js", icon: <FaNode /> },
+        { name: "Express", icon: <SiExpress /> },
+        { name: "Fastify", icon: <SiFastify /> },
+        { name: "REST APIs", icon: <FaServer /> },
+        { name: "FastAPI", icon: <SiFastapi /> },
+        { name: "JWT & OAuth", icon: <FaTools /> },
       ],
     },
     {
       title: "Databases",
       skills: [
-        { name: "MySQL", icon: <SiMysql />, proficiency: 92 },
-        { name: "Redis", icon: <SiRedis />, proficiency: 85 },
-        { name: "PostgreSQL", icon: <SiPostgresql />, proficiency: 75 },
-        { name: "MongoDB", icon: <SiMongodb />, proficiency: 75 },
+        { name: "MySQL", icon: <SiMysql /> },
+        { name: "Redis", icon: <SiRedis /> },
+        { name: "PostgreSQL", icon: <SiPostgresql /> },
+        { name: "MongoDB", icon: <SiMongodb /> },
       ],
     },
     {
       title: "AI / LLM Engineering",
       skills: [
-        { name: "OpenAI API", icon: <SiOpenai />, proficiency: 88 },
-        { name: "Prompt Engineering", icon: <FaTools />, proficiency: 88 },
-        { name: "LangGraph / AI Agents", icon: <FaPuzzlePiece />, proficiency: 80 },
+        { name: "OpenAI API", icon: <SiOpenai /> },
+        { name: "Prompt Engineering", icon: <FaTools /> },
+        { name: "LangGraph / AI Agents", icon: <FaPuzzlePiece /> },
       ],
     },
     {
       title: "Cloud & Infrastructure",
       skills: [
-        { name: "AWS (RDS, CloudFront, ECR)", icon: <FaAws />, proficiency: 85 },
-        { name: "Git & GitHub", icon: <FaGitAlt />, proficiency: 95 },
-        { name: "Docker", icon: <SiDocker />, proficiency: 65 },
+        { name: "AWS (RDS, CloudFront, ECR)", icon: <FaAws /> },
+        { name: "Git & GitHub", icon: <FaGitAlt /> },
+        { name: "Docker", icon: <SiDocker /> },
       ],
     },
     {
       title: "Integrations",
       skills: [
-        { name: "Stripe", icon: <SiStripe />, proficiency: 88 },
-        { name: "Salesforce", icon: <SiSalesforce />, proficiency: 80 },
-        { name: "Twilio / SendGrid / Meta", icon: <FaPuzzlePiece />, proficiency: 85 },
+        { name: "Stripe", icon: <SiStripe /> },
+        { name: "Salesforce", icon: <SiSalesforce /> },
+        { name: "Twilio / SendGrid / Meta", icon: <FaPuzzlePiece /> },
       ],
     },
   ];
@@ -131,30 +131,36 @@ const Skills: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Bento grid of skill categories */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {skillCategories.map((category, idx) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              whileHover={{ y: -4 }}
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-100 dark:border-gray-700 hover:border-accent/40 dark:hover:border-accent/40 hover:shadow-lg transition-all duration-300"
             >
-              <div className="flex items-center mb-6">
-                <h3 className="text-xl font-bold text-primary dark:text-white">
+              <div className="flex items-center gap-2 mb-5">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                <h3 className="text-base font-bold text-primary dark:text-white">
                   {category.title}
                 </h3>
-                <div className="h-0.5 bg-accent flex-grow ml-4"></div>
               </div>
 
-              <div className="space-y-8">
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <SkillBar
+                  <motion.span
                     key={skill.name}
-                    name={skill.name}
-                    icon={skill.icon}
-                    proficiency={skill.proficiency}
-                  />
+                    whileHover={{ y: -3, scale: 1.04 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300 hover:border-accent/50 hover:text-accent dark:hover:text-accent transition-colors"
+                  >
+                    <span className="text-accent">{skill.icon}</span>
+                    {skill.name}
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
@@ -211,65 +217,6 @@ const Skills: React.FC = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
-
-interface SkillBarProps {
-  name: string;
-  icon: React.ReactNode;
-  proficiency: number;
-}
-
-const SkillBar: React.FC<SkillBarProps> = ({ name, icon, proficiency }) => {
-  return (
-    <motion.div
-      className="group bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-100 dark:border-gray-700 hover:border-accent/30 dark:hover:border-accent/30 transition-all duration-300"
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-    >
-      <div className="flex items-center mb-4">
-        <div className="text-accent text-xl mr-3 bg-blue-50 dark:bg-blue-900/30 p-3 rounded-md group-hover:scale-110 transition-transform">
-          {icon}
-        </div>
-        <div className="flex justify-between w-full">
-          <span className="text-primary dark:text-white font-semibold">
-            {name}
-          </span>
-          <motion.span
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="text-accent font-bold font-mono bg-accent/5 dark:bg-accent/10 px-2 py-0.5 rounded-md"
-          >
-            {proficiency}%
-          </motion.span>
-        </div>
-      </div>
-
-      <div className="h-3 w-full bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden shadow-inner">
-        <motion.div
-          className="h-full bg-gradient-to-r from-accent to-blue-500 dark:from-accent dark:to-blue-600 rounded-full relative"
-          initial={{ width: 0 }}
-          whileInView={{ width: `${proficiency}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <motion.div
-            className="absolute right-0 top-0 h-full w-1.5 bg-white/30"
-            animate={{
-              opacity: [0, 1, 0],
-              x: [-5, 0, 5],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-        </motion.div>
-      </div>
-    </motion.div>
   );
 };
 

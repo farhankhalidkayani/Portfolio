@@ -79,6 +79,21 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.div
+            className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
+              Available for new opportunities
+            </span>
+          </motion.div>
+
+          <motion.div
             className="flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
