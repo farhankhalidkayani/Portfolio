@@ -1,40 +1,101 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  animate,
+  useInView,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 import {
   FiGithub,
   FiExternalLink,
   FiServer,
   FiDatabase,
   FiKey,
+  FiZap,
+  FiDollarSign,
+  FiUsers,
+  FiCpu,
+  FiStar,
+  FiTrendingDown,
+  FiTrendingUp,
 } from "react-icons/fi";
-import { SiNodedotjs, SiExpress, SiFastify, SiMysql, SiPython, SiFastapi } from "react-icons/si";
+import {
+  SiNodedotjs,
+  SiExpress,
+  SiFastify,
+  SiMysql,
+  SiPython,
+  SiFastapi,
+  SiSalesforce,
+  SiOpenai,
+} from "react-icons/si";
+
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  techStack: { name: string; icon: React.ReactNode }[];
+  keyFeatures: string[];
+  architecture: string;
+  github: string;
+  liveDemo: string;
+  featured?: boolean;
+}
+
+// Subtle 3D tilt-on-hover effect, driven by mouse position within the element
+function useTilt(strength = 8) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-150, 150], [strength, -strength]);
+  const rotateY = useTransform(x, [-150, 150], [-strength, strength]);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    x.set(e.clientX - rect.left - rect.width / 2);
+    y.set(e.clientY - rect.top - rect.height / 2);
+  };
+
+  const onMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return { ref, rotateX, rotateY, onMouseMove, onMouseLeave };
+}
 
 const Projects: React.FC = () => {
   const [activeTab, setActiveTab] = useState("all");
 
   // Project data
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "DealerIQ AI",
       description:
-        "Multi-tenant automotive CRM integrating AI voice, chat, and messaging workflows. Processes ~400 incoming leads per day per client with automated AI engagement across calls, SMS, email, and social channels.",
+        "Multi-tenant automotive CRM integrating AI voice, chat, and messaging workflows. Processes ~400 incoming leads per day per client with automated AI engagement across calls, SMS, email, and social channels—backed by an AI chat service that has processed 100M+ LLM tokens in production.",
       image: "/project-dealer-ai.jpg",
-      tags: ["backend", "crm", "api", "architecture"],
+      tags: ["backend", "crm", "api", "architecture", "ai"],
+      featured: true,
       techStack: [
         { name: "Node.js", icon: <SiNodedotjs /> },
         { name: "Fastify", icon: <SiFastify /> },
         { name: "MySQL", icon: <SiMysql /> },
+        { name: "OpenAI", icon: <SiOpenai /> },
       ],
       keyFeatures: [
         "IQ Chat: unified thread from Instagram, Messenger, SMS, Email",
+        "Refactored a 100+ page monolithic AI prompt into a modular LangGraph agent architecture",
         "RBAC, audit trails, e-sign document builder, workflow automation",
         "Redis caching; WebSockets for real-time notifications",
-        "Background jobs for reminders, workflow triggers, task expiration",
         "Integrations: Salesforce, Stripe, Twilio, SendGrid, Meta, OpenAI, KBB, CarGurus, Carfax",
       ],
       architecture:
-        "Layered design: Routes → Controllers → Services → Repositories → Validators. Heavy chat queries optimized from ~45s to ~3s. Contributing to refactoring with queues, event-driven architecture, and microservices.",
+        "Layered design: Routes → Controllers → Services → Repositories → Validators. Optimized a production chat query from ~45s to ~3s and reduced database CPU utilization from ~99.9% to ~20% using AWS RDS Performance Insights. Audited AWS infrastructure and cut cloud costs by ~$1,100/month. Contributing to refactoring with queues, event-driven architecture, and microservices.",
       github: "https://github.com/farhankhalidkayani",
       liveDemo: "https://www.dealeriq.ai/",
     },
@@ -103,21 +164,49 @@ const Projects: React.FC = () => {
       github: "https://github.com/farhankhalidkayani",
       liveDemo: "#",
     },
+    {
+      id: 5,
+      title: "Forward Deployed Engineering & Solution Architecture",
+      description:
+        "Embedded, client-facing engineering work as a technical SME across presales and discovery calls—translating business requirements directly into CRM, AI, and integration architectures for prospective clients.",
+      image: "/project-fde.jpg",
+      tags: ["consulting", "architecture", "fde", "ai"],
+      techStack: [
+        { name: "Salesforce", icon: <SiSalesforce /> },
+        { name: "OpenAI", icon: <SiOpenai /> },
+        { name: "Node.js", icon: <SiNodedotjs /> },
+      ],
+      keyFeatures: [
+        "Act as technical SME on presales/discovery calls across automotive, real estate, and healthcare verticals",
+        "Designed a hybrid front-desk architecture combining a video kiosk, remote agent, AI automation, and EMR integration for a healthcare client, with HIPAA considerations",
+        "Scope integration feasibility (CRM, EMR, communications) and translate business requirements into technical solution designs",
+        "Bridge sales and engineering—prototyping proofs-of-concept to validate architecture decisions before implementation",
+      ],
+      architecture:
+        "Works directly with clients and product stakeholders to embed engineering judgment into early-stage deal cycles—evaluating existing systems, scoping third-party integrations, and designing solutions that satisfy both technical and compliance constraints ahead of a build commitment.",
+      github: "https://github.com/farhankhalidkayani",
+      liveDemo: "#",
+    },
   ];
 
-  // Filter projects based on active tab
+  const dealerIQ = projects.find((p) => p.id === 1)!;
+
+  // Filter projects based on active tab. The flagship (DealerIQ) gets its own
+  // spotlight above the grid on "All Projects", so it's excluded there to avoid duplication.
   const filteredProjects =
     activeTab === "all"
-      ? projects
+      ? projects.filter((project) => project.id !== dealerIQ.id)
       : projects.filter((project) => project.tags.includes(activeTab));
 
   // Tab options
   const tabs = [
     { id: "all", label: "All Projects" },
     { id: "backend", label: "Backend" },
+    { id: "ai", label: "AI/LLM" },
     { id: "api", label: "API" },
     { id: "architecture", label: "Architecture" },
     { id: "crm", label: "CRM Systems" },
+    { id: "fde", label: "Forward Deployed" },
   ];
 
   return (
@@ -151,8 +240,9 @@ const Projects: React.FC = () => {
             <div className="absolute -top-[4px] left-[50%] w-3 h-3 bg-accent rounded-full"></div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
-            My projects showcase my expertise in building robust backend
-            systems, complex database architectures, and scalable API solutions.
+            My projects showcase production experience building scalable
+            backend systems, AI/LLM-powered platforms, and integration-heavy
+            SaaS architectures.
           </p>
         </motion.div>
 
@@ -175,6 +265,9 @@ const Projects: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Flagship project spotlight */}
+        {activeTab === "all" && <FeaturedProject project={dealerIQ} />}
 
         {/* Projects grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
@@ -245,39 +338,290 @@ const Projects: React.FC = () => {
   );
 };
 
+interface StatTileProps {
+  icon: React.ReactNode;
+  label: string;
+  from: number;
+  to: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  note: string;
+  trend: "up" | "down";
+}
+
+// Animated stat tile: counts from `from` to `to` once it scrolls into view.
+const StatTile: React.FC<StatTileProps> = ({
+  icon,
+  label,
+  from,
+  to,
+  prefix = "",
+  suffix = "",
+  decimals = 0,
+  note,
+  trend,
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const [display, setDisplay] = useState(from);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const controls = animate(from, to, {
+      duration: 1.8,
+      ease: "easeOut",
+      onUpdate: (latest) => setDisplay(latest),
+    });
+    return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      whileHover={{ y: -4 }}
+      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+      className="relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-xl p-5 overflow-hidden group"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="relative z-10">
+        <div className="flex items-center gap-2 mb-3 text-accent">
+          {icon}
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-300">
+            {label}
+          </span>
+        </div>
+        <div className="text-3xl md:text-4xl font-bold text-white font-mono tabular-nums">
+          {prefix}
+          {display.toFixed(decimals)}
+          {suffix}
+        </div>
+        <div className="mt-1.5 text-xs font-medium flex items-center gap-1 text-emerald-400">
+          {trend === "down" ? <FiTrendingDown /> : <FiTrendingUp />}
+          {note}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// Flagship project spotlight: 3D tilt card + animated production-impact metrics.
+const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
+  const tilt = useTilt(5);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.7 }}
+      className="mb-16"
+    >
+      <div className="flex items-center justify-center gap-2 mb-6">
+        <motion.span
+          animate={{ opacity: [1, 0.35, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="h-2 w-2 rounded-full bg-emerald-400"
+        />
+        <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+          Flagship Production Platform
+        </span>
+      </div>
+
+      <motion.div
+        ref={tilt.ref}
+        onMouseMove={tilt.onMouseMove}
+        onMouseLeave={tilt.onMouseLeave}
+        style={{
+          rotateX: tilt.rotateX,
+          rotateY: tilt.rotateY,
+          transformStyle: "preserve-3d",
+        }}
+        className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-black border border-white/10 shadow-2xl"
+      >
+        {/* Rotating conic glow border */}
+        <motion.div
+          className="pointer-events-none absolute -inset-[2px] rounded-2xl opacity-70"
+          style={{
+            background:
+              "conic-gradient(from 0deg, transparent 0%, rgba(59,130,246,0.7) 12%, transparent 24%, transparent 100%)",
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
+        />
+        <div className="absolute inset-[1.5px] rounded-2xl bg-gradient-to-br from-gray-900 via-gray-900 to-black" />
+
+        {/* Background accents */}
+        <div className="absolute inset-0 bg-circuit-pattern opacity-[0.04]" />
+        <div className="absolute -top-24 -right-24 w-72 h-72 bg-accent/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl" />
+
+        <div
+          className="relative z-10 p-8 md:p-12"
+          style={{ transform: "translateZ(30px)" }}
+        >
+          <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+            <div className="flex-1">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <h3 className="text-3xl md:text-4xl font-bold text-white">
+                  {project.title}
+                </h3>
+                <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold">
+                  <FiStar size={12} /> Flagship
+                </span>
+              </div>
+
+              <p className="text-gray-300 leading-relaxed mb-6 max-w-2xl">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {project.techStack.map((tech) => (
+                  <span
+                    key={tech.name}
+                    className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-md text-sm text-gray-200"
+                  >
+                    <span className="text-accent">{tech.icon}</span>
+                    {tech.name}
+                  </span>
+                ))}
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                {project.keyFeatures.map((feature, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.08 }}
+                    className="flex items-start gap-2 text-sm text-gray-300"
+                  >
+                    <FiKey
+                      className="text-accent mt-0.5 flex-shrink-0"
+                      size={14}
+                    />
+                    <span>{feature}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <motion.a
+                  href={project.liveDemo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-2 px-5 py-2.5 bg-accent hover:bg-lightBlue text-white rounded-full font-medium shadow-lg shadow-accent/30"
+                >
+                  <FiExternalLink /> Live Demo
+                </motion.a>
+                <motion.a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full font-medium border border-white/10"
+                >
+                  <FiGithub /> GitHub
+                </motion.a>
+              </div>
+            </div>
+
+            <div className="lg:w-[380px] flex-shrink-0 grid grid-cols-2 gap-4">
+              <StatTile
+                icon={<FiZap />}
+                label="Chat Latency"
+                from={45}
+                to={3}
+                suffix="s"
+                note="from ~45s"
+                trend="down"
+              />
+              <StatTile
+                icon={<FiDatabase />}
+                label="DB CPU Load"
+                from={99}
+                to={20}
+                suffix="%"
+                note="from ~99.9%"
+                trend="down"
+              />
+              <StatTile
+                icon={<FiDollarSign />}
+                label="Cloud Cost Cut"
+                from={0}
+                to={1100}
+                prefix="$"
+                suffix="/mo"
+                note="infra savings"
+                trend="up"
+              />
+              <StatTile
+                icon={<FiUsers />}
+                label="Leads / Day"
+                from={0}
+                to={400}
+                suffix="+"
+                note="per client"
+                trend="up"
+              />
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 text-sm text-gray-400">
+            <FiCpu className="text-accent flex-shrink-0" />
+            <span>
+              100M+ LLM tokens processed in production via an OpenAI +
+              LangGraph agent architecture
+            </span>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 interface ProjectCardProps {
-  project: {
-    id: number;
-    title: string;
-    description: string;
-    image: string;
-    tags: string[];
-    techStack: { name: string; icon: React.ReactNode }[];
-    keyFeatures: string[];
-    architecture: string;
-    github: string;
-    liveDemo: string;
-  };
+  project: Project;
   index: number;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const [showDetails, setShowDetails] = useState(false);
+  const tilt = useTilt(4);
 
   return (
     <motion.div
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      style={{
+        rotateX: tilt.rotateX,
+        rotateY: tilt.rotateY,
+        transformStyle: "preserve-3d",
+      }}
       className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col h-full group relative"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -6, boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)" }}
     >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-circuit-pattern opacity-[0.03] dark:opacity-[0.02] pointer-events-none z-0"></div>
 
       {/* Curved accent bar at top */}
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-accent via-blue-500 to-purple-500 rounded-b-full"></div>
+
+      {project.featured && (
+        <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-accent/90 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+          <FiStar size={10} /> Flagship
+        </div>
+      )}
 
       {/* Project image or placeholder with gradient overlay */}
       <div className="h-56 bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black flex items-center justify-center relative overflow-hidden">
@@ -286,12 +630,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
         <div className="text-center text-white p-6 z-10 relative">
           {/* Icon with glow effect */}
-          <div className="relative mb-3">
+          <motion.div
+            className="relative mb-3"
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          >
             <div className="absolute inset-0 bg-accent/30 rounded-full blur-xl"></div>
             <div className="bg-gray-800/80 backdrop-blur-sm p-4 rounded-full shadow-xl inline-block">
               <FiServer className="text-5xl text-accent" />
             </div>
-          </div>
+          </motion.div>
           <p className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             {project.title}
           </p>

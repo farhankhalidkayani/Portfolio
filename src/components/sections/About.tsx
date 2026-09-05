@@ -37,24 +37,31 @@ const About: React.FC = () => {
 
             <div className="space-y-4 text-gray-600 dark:text-gray-300">
               <p>
-                Backend Software Engineer with hands-on experience building
-                multi-tenant CRM platforms, AI-powered automation systems, and
-                high-integration backend architectures. Experienced in designing
-                scalable APIs, workflow engines, real-time communication
-                systems, and AI-driven lead engagement platforms.
+                Backend-focused Software Engineer and Technology Consultant
+                with 2+ years of production experience building scalable SaaS
+                and AI-powered platforms. I specialize in{" "}
+                <strong>Node.js, SQL/MySQL, Redis, and AWS</strong>, with
+                hands-on work architecting a multi-tenant automotive CRM,
+                optimizing production backend/database workloads, and building
+                LLM-powered agent workflows with OpenAI and LangGraph.
               </p>
 
               <p>
-                Strong background in <strong>Node.js and Python</strong> with
-                production integrations across Stripe, Salesforce, Meta APIs,
-                Twilio, and OpenAI. Regularly participate in client architecture
-                discussions as a technical SME and known for rapidly designing
-                and shipping solutions using AI-assisted engineering workflows.
+                Production highlights include reducing chat query latency from{" "}
+                <strong>~45s to ~3s</strong>, cutting database CPU utilization
+                from <strong>~99.9% to ~20%</strong> using AWS RDS Performance
+                Insights, and identifying ~$1,100/month in unused AWS
+                infrastructure. I've also refactored an AI chat system built
+                around a 100+ page prompt into a modular LangGraph-based agent
+                architecture.
               </p>
 
               <p>
-                Tech-stack agnostic engineer capable of adapting quickly to new
-                technologies to deliver production systems.
+                In my current role as Technology Consultant, I combine
+                hands-on engineering with system architecture, technical
+                discovery, and presales—acting as a technical SME in client
+                conversations to translate business requirements into CRM, AI,
+                and integration architectures.
               </p>
 
               <div className="pt-4">
@@ -63,10 +70,10 @@ const About: React.FC = () => {
                 </h4>
                 <div className="border-l-2 border-accent pl-4 py-1">
                   <p className="font-medium">
-                    Bachelor of Science in Information Technology (BSIT)
+                    BS Information Technology — Final Year (CGPA 3.65)
                   </p>
                   <p className="text-gray-500 dark:text-gray-400">
-                    University of Education
+                    University of Education, Lahore
                   </p>
                 </div>
               </div>
@@ -118,23 +125,24 @@ const About: React.FC = () => {
                 <div className="flex items-start">
                   <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
                   <p className="ml-3 text-gray-600 dark:text-gray-300">
-                    Led development of multiple major platform features and took
-                    ownership of production systems.
+                    Reduced chat service latency from ~45s to ~3s and database
+                    CPU utilization from ~99.9% to ~20% via query and RDS
+                    performance optimization.
                   </p>
                 </div>
                 <div className="flex items-start">
                   <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
                   <p className="ml-3 text-gray-600 dark:text-gray-300">
-                    Mentored multiple backend interns who successfully
-                    transitioned into full-time engineering roles.
+                    Audited and decommissioned unused AWS resources, cutting
+                    infrastructure costs by ~$1,100/month.
                   </p>
                 </div>
                 <div className="flex items-start">
                   <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
                   <p className="ml-3 text-gray-600 dark:text-gray-300">
-                    Known for rapid problem solving, debugging production issues,
-                    and designing solutions under tight timelines. Served as
-                    on-call engineer for production systems.
+                    Refactored a 100+ page monolithic AI prompt into a modular
+                    LangGraph agent architecture for more reliable, maintainable
+                    AI chat behavior.
                   </p>
                 </div>
               </div>

@@ -10,22 +10,22 @@ const Experience: React.FC = () => {
       company: "Hatzs Dimensions",
       period: "Nov 2025 – Present",
       description:
-        "Serve as technical SME in client discovery and architecture discussions for CRM and AI-driven platforms.",
+        "Serve as technical SME in client discovery and presales conversations, translating business requirements into CRM, AI, and integration architectures.",
       responsibilities: [
         {
-          text: "Design backend architectures for automation systems, CRM platforms, and AI-powered lead engagement tools",
-          icon: <FiServer />,
-        },
-        {
-          text: "Leverage AI-assisted development workflows to rapidly prototype and ship MVPs across backend and frontend layers",
+          text: "Participate in presales calls as a technical SME for prospective clients, scoping CRM, AI, and automation solutions",
           icon: <FiCode />,
         },
         {
-          text: "Demonstrate tech-stack agnostic engineering across Node.js, Python, Next.js, and Salesforce",
-          icon: <FiDatabase />,
+          text: "Design backend and integration architectures for AI-powered CRM and lead engagement platforms",
+          icon: <FiServer />,
         },
         {
-          text: "Built custom e-signature workflow integrated into Salesforce, replacing a third-party document signing platform",
+          text: "Refactored a 100+ page monolithic AI prompt into a modular LangGraph-based agent architecture for more reliable AI chat behavior",
+          icon: <FiActivity />,
+        },
+        {
+          text: "Built a custom e-signature workflow integrated into Salesforce, replacing a third-party document signing platform",
           icon: <FiActivity />,
         },
         {
@@ -35,11 +35,11 @@ const Experience: React.FC = () => {
       ],
       techStack: [
         "Node.js",
-        "Python",
-        "Next.js",
         "Salesforce",
+        "OpenAI",
+        "LangGraph",
         "REST APIs",
-        "AI/ML",
+        "AWS",
       ],
     },
     {
@@ -47,29 +47,33 @@ const Experience: React.FC = () => {
       company: "Hatzs Dimensions",
       period: "Jul 2025 – Nov 2025",
       description:
-        "Developed backend services and APIs for production applications using Node.js and MySQL.",
+        "Owned backend performance, AI systems, and cloud infrastructure for DealerIQ AI, a multi-tenant automotive CRM processing ~400 leads/day/client.",
       responsibilities: [
         {
-          text: "Implemented JWT authentication systems and OAuth integrations",
-          icon: <FiCode />,
-        },
-        {
-          text: "Built integrations with payment platforms, messaging APIs, and external CRM systems",
+          text: "Optimized a production chat query from ~45s to ~3s (~93% reduction) by resolving backend/database bottlenecks",
           icon: <FiActivity />,
         },
         {
-          text: "Developed backend features supporting lead management, booking systems, notifications, and automation workflows",
+          text: "Used AWS RDS Performance Insights to reduce database CPU utilization from ~99.9% to ~20%",
+          icon: <FiDatabase />,
+        },
+        {
+          text: "Audited AWS infrastructure and decommissioned unused services, cutting cloud costs by ~$1,100/month",
           icon: <FiServer />,
         },
+        {
+          text: "Built AI-powered chat and lead-engagement features processing 100M+ LLM tokens in production using OpenAI",
+          icon: <FiCode />,
+        },
       ],
-      techStack: ["Node.js", "MySQL", "JWT", "OAuth", "REST APIs"],
+      techStack: ["Node.js", "MySQL", "Redis", "AWS RDS", "OpenAI"],
     },
     {
       title: "Associate Software Engineer",
       company: "Hatzs Dimensions",
       period: "Jan 2025 – Jul 2025",
       description:
-        "Contributed to backend development of Befer AI, a business management platform supporting bookings, leads, and payments.",
+        "Contributed to backend development of Befer AI, an AI-powered CRM platform supporting bookings, leads, and payments.",
       responsibilities: [
         {
           text: "Implemented secure authentication systems including Google OAuth and JWT authorization",
@@ -87,11 +91,11 @@ const Experience: React.FC = () => {
       techStack: ["Node.js", "Stripe", "OAuth", "JWT", "REST APIs"],
     },
     {
-      title: "Backend Intern",
+      title: "Development Intern",
       company: "Hatzs Dimensions",
       period: "Nov 2024 – Jan 2025",
       description:
-        "Assisted in backend API development, debugging, and integration tasks using Node.js and MySQL.",
+        "Started professional software development career with backend API development, debugging, and integration tasks.",
       responsibilities: [
         {
           text: "Backend API development and debugging for production applications",
@@ -125,8 +129,9 @@ const Experience: React.FC = () => {
           <h2 className="section-heading mx-auto">Work Experience</h2>
           <div className="h-1 w-24 bg-accent mt-6 mb-6 mx-auto"></div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
-            From Backend Intern to Technology Consultant at Hatzs Dimensions—building
-            multi-tenant CRMs, AI-powered platforms, and scalable backend systems.
+            From Development Intern to Technology Consultant at Hatzs
+            Dimensions—building multi-tenant CRMs, AI-powered platforms, and
+            scalable backend systems.
           </p>
         </motion.div>
 

@@ -7,6 +7,7 @@ import {
   FaDatabase,
   FaPuzzlePiece,
   FaTools,
+  FaAws,
 } from "react-icons/fa";
 import {
   SiExpress,
@@ -21,6 +22,8 @@ import {
   SiJavascript,
   SiStripe,
   SiOpenai,
+  SiSalesforce,
+  SiDocker,
 } from "react-icons/si";
 
 const Skills: React.FC = () => {
@@ -30,40 +33,53 @@ const Skills: React.FC = () => {
       title: "Languages",
       skills: [
         { name: "JavaScript", icon: <SiJavascript />, proficiency: 95 },
-        { name: "TypeScript", icon: <SiTypescript />, proficiency: 90 },
-        { name: "Python", icon: <SiPython />, proficiency: 85 },
         { name: "SQL", icon: <FaDatabase />, proficiency: 90 },
+        { name: "Python", icon: <SiPython />, proficiency: 85 },
+        { name: "TypeScript", icon: <SiTypescript />, proficiency: 75 },
       ],
     },
     {
       title: "Backend & APIs",
       skills: [
         { name: "Node.js", icon: <FaNode />, proficiency: 95 },
-        { name: "Fastify", icon: <SiFastify />, proficiency: 90 },
         { name: "Express", icon: <SiExpress />, proficiency: 90 },
-        { name: "FastAPI", icon: <SiFastapi />, proficiency: 85 },
+        { name: "Fastify", icon: <SiFastify />, proficiency: 85 },
         { name: "REST APIs", icon: <FaServer />, proficiency: 95 },
-        { name: "WebSockets", icon: <FaPuzzlePiece />, proficiency: 85 },
+        { name: "FastAPI", icon: <SiFastapi />, proficiency: 80 },
         { name: "JWT & OAuth", icon: <FaTools />, proficiency: 90 },
       ],
     },
     {
       title: "Databases",
       skills: [
-        { name: "MySQL", icon: <SiMysql />, proficiency: 90 },
-        { name: "MongoDB", icon: <SiMongodb />, proficiency: 80 },
+        { name: "MySQL", icon: <SiMysql />, proficiency: 92 },
         { name: "Redis", icon: <SiRedis />, proficiency: 85 },
         { name: "PostgreSQL", icon: <SiPostgresql />, proficiency: 75 },
+        { name: "MongoDB", icon: <SiMongodb />, proficiency: 75 },
       ],
     },
     {
-      title: "Integrations & Tools",
+      title: "AI / LLM Engineering",
+      skills: [
+        { name: "OpenAI API", icon: <SiOpenai />, proficiency: 88 },
+        { name: "Prompt Engineering", icon: <FaTools />, proficiency: 88 },
+        { name: "LangGraph / AI Agents", icon: <FaPuzzlePiece />, proficiency: 80 },
+      ],
+    },
+    {
+      title: "Cloud & Infrastructure",
+      skills: [
+        { name: "AWS (RDS, CloudFront, ECR)", icon: <FaAws />, proficiency: 85 },
+        { name: "Git & GitHub", icon: <FaGitAlt />, proficiency: 95 },
+        { name: "Docker", icon: <SiDocker />, proficiency: 65 },
+      ],
+    },
+    {
+      title: "Integrations",
       skills: [
         { name: "Stripe", icon: <SiStripe />, proficiency: 88 },
-        { name: "OpenAI API", icon: <SiOpenai />, proficiency: 85 },
-        { name: "Twilio / SendGrid", icon: <FaPuzzlePiece />, proficiency: 85 },
-        { name: "Git & GitHub", icon: <FaGitAlt />, proficiency: 95 },
-        { name: "Sentry & Monitoring", icon: <FaTools />, proficiency: 80 },
+        { name: "Salesforce", icon: <SiSalesforce />, proficiency: 80 },
+        { name: "Twilio / SendGrid / Meta", icon: <FaPuzzlePiece />, proficiency: 85 },
       ],
     },
   ];
@@ -108,10 +124,10 @@ const Skills: React.FC = () => {
             ></div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
-            Languages: JavaScript, TypeScript, Python, SQL. Backend: Node.js,
-            Fastify, Express, FastAPI. Multi-tenant systems, RBAC, workflow
-            engines, and integrations with Stripe, Salesforce, Meta APIs,
-            Twilio, and OpenAI.
+            Backend engineering with Node.js, MySQL, and Redis; AI/LLM
+            application development with OpenAI and LangGraph; and production
+            experience across AWS infrastructure and integrations with
+            Salesforce, Stripe, Twilio, SendGrid, and Meta APIs.
           </p>
         </motion.div>
 
@@ -163,33 +179,33 @@ const Skills: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <ExpertiseCard
-              title="API Design & Architecture"
-              description="Creating well-structured RESTful APIs with proper error handling, validation, authentication, and documentation."
+              title="Database Performance"
+              description="Diagnosing production bottlenecks with AWS RDS Performance Insights and optimizing queries—reduced DB CPU from ~99.9% to ~20% and chat latency from ~45s to ~3s."
             />
 
             <ExpertiseCard
-              title="Database Optimization"
-              description="Designing efficient schemas, writing optimized queries, implementing indexing strategies, and ensuring data integrity."
+              title="AI Agent Architecture"
+              description="Designing LLM-powered workflows with OpenAI and LangGraph—refactored a 100+ page monolithic prompt into a modular, maintainable agent graph."
             />
 
             <ExpertiseCard
-              title="Authentication Systems"
-              description="Implementing secure user authentication flows, JWT-based auth, OAuth integrations, and role-based access control."
+              title="Cloud Cost Optimization"
+              description="Auditing AWS infrastructure to identify and decommission unused resources—cut cloud spend by ~$1,100/month."
             />
 
             <ExpertiseCard
-              title="Payment Processing"
-              description="Integrating payment gateways, implementing secure transaction flows, and handling subscription management."
+              title="Multi-tenant SaaS"
+              description="Building multi-tenant CRM architecture handling hundreds of leads/day/client across messaging, email, and social channels."
             />
 
             <ExpertiseCard
-              title="Multi-tenant & RBAC"
-              description="Designing multi-tenant systems, role-based access control, workflow engines, and event-driven architectures."
+              title="Third-Party Integrations"
+              description="Production integrations with Salesforce, Stripe, Twilio, SendGrid, Meta, and automotive data APIs."
             />
 
             <ExpertiseCard
-              title="System Performance"
-              description="Identifying and resolving bottlenecks, optimizing queries, implementing caching strategies, and load testing."
+              title="Authentication & Security"
+              description="Implementing secure authentication flows, JWT-based auth, OAuth integrations, and role-based access control."
             />
           </div>
         </motion.div>

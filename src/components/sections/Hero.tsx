@@ -52,10 +52,10 @@ const Hero: React.FC = () => {
             <Typewriter
               options={{
                 strings: [
-                  "Software Engineer",
-                  "AI Integrations",
+                  "Backend Engineer",
+                  "AI/LLM Engineer",
+                  "Technology Consultant",
                   "Scalable Systems",
-                  "Backend",
                 ],
                 autoStart: true,
                 loop: true,
@@ -69,12 +69,13 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            Backend Software Engineer with hands-on experience building
-            multi-tenant CRM platforms, AI-powered automation systems, and
-            high-integration backend architectures. Experienced in scalable
-            APIs, workflow engines, real-time systems, and AI-driven lead
-            engagement—with production integrations across Stripe, Salesforce,
-            Meta APIs, Twilio, and OpenAI.
+            Backend-focused Software Engineer and Technology Consultant with
+            2+ years building production SaaS and AI-powered platforms.
+            I specialize in Node.js, SQL/MySQL, Redis, AWS infrastructure, and
+            LLM-powered applications—with production work spanning a
+            multi-tenant automotive CRM, LangGraph-based AI agents, and
+            integrations across Salesforce, Stripe, Twilio, SendGrid, Meta,
+            and OpenAI.
           </motion.p>
 
           <motion.div
@@ -136,11 +137,11 @@ const Hero: React.FC = () => {
           >
             {[
               "Node.js",
-              "Python",
-              "Fastify",
-              "FastAPI",
               "MySQL",
               "Redis",
+              "AWS",
+              "OpenAI / LangGraph",
+              "Python",
             ].map((tech) => (
               <span
                 key={tech}
