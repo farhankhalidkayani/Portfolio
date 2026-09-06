@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
           >
             <a
               href="#projects"
-              className="px-8 py-3 bg-accent hover:bg-lightBlue text-white rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 shadow-md hover:shadow-lg hover:translate-y-[-2px] font-medium flex items-center gap-2"
+              className="px-8 py-3 bg-accentSolid hover:bg-lightBlue text-white rounded-md transition-all focus:outline-none focus:ring-2 focus:ring-accentSolid focus:ring-offset-2 shadow-md hover:shadow-lg hover:translate-y-[-2px] font-medium flex items-center gap-2"
             >
               <span>View Projects</span>
               <svg
@@ -184,7 +184,7 @@ const Hero: React.FC = () => {
           Scroll Down
         </p>
         <motion.div
-          className="bg-gray-200/70 backdrop-blur-sm dark:bg-gray-700/70 rounded-full p-2 hover:bg-accent hover:text-white transition-colors hover:scale-110"
+          className="bg-gray-200/70 backdrop-blur-sm dark:bg-gray-700/70 rounded-full p-2 hover:bg-accentSolid hover:text-white transition-colors hover:scale-110"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >

@@ -240,7 +240,7 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-6 py-3 bg-accent hover:bg-lightBlue text-white rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 flex items-center justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                className="w-full px-6 py-3 bg-accentSolid hover:bg-lightBlue text-white rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accentSolid focus:ring-offset-2 flex items-center justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
                 {loading ? (
                   <span className="flex items-center">
@@ -327,7 +327,7 @@ const Contact: React.FC = () => {
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="bg-gradient-to-r from-accent to-lightBlue text-white p-6 rounded-xl shadow-lg relative overflow-hidden"
+              className="bg-gradient-to-r from-accentSolid to-amber-800 text-white p-6 rounded-xl shadow-lg relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mt-10 -mr-10"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -mb-8 -ml-8"></div>
@@ -342,7 +342,7 @@ const Contact: React.FC = () => {
                 </p>
                 <a
                   href="mailto:rj.farhan4232@gmail.com?subject=Job%20Opportunity"
-                  className="inline-flex items-center px-4 py-2 bg-gray-400 text-accent rounded-md hover:bg-gray-500 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 font-medium"
+                  className="inline-flex items-center px-4 py-2 bg-white text-accentSolid rounded-md hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 font-medium"
                 >
                   <FiMail className="mr-2" />
                   Get in touch
@@ -377,7 +377,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
       className="flex items-start group p-3 rounded-lg hover:bg-accent/5 transition-all duration-300"
       whileHover={{ x: 5 }}
     >
-      <div className="text-accent text-xl mt-1 mr-4 group-hover:text-lightBlue transition-colors bg-accent/10 p-2 rounded-full">
+      <div className="text-accent text-xl mt-1 mr-4 transition-colors bg-accent/10 p-2 rounded-full">
         {icon}
       </div>
       <div>

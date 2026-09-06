@@ -384,9 +384,9 @@ const StatTile: React.FC<StatTileProps> = ({
       transition={{ type: "spring", stiffness: 300, damping: 15 }}
       className="relative bg-white/[0.04] backdrop-blur-sm border border-white/10 rounded-xl p-5 overflow-hidden group"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="relative z-10">
-        <div className="flex items-center gap-2 mb-3 text-accent">
+        <div className="flex items-center gap-2 mb-3 text-amber-400">
           {icon}
           <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-300">
             {label}
@@ -424,7 +424,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
           transition={{ duration: 2, repeat: Infinity }}
           className="h-2 w-2 rounded-full bg-emerald-400"
         />
-        <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+        <span className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">
           Flagship Production Platform
         </span>
       </div>
@@ -454,7 +454,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
 
         {/* Background accents */}
         <div className="absolute inset-0 bg-circuit-pattern opacity-[0.04]" />
-        <div className="absolute -top-24 -right-24 w-72 h-72 bg-accent/20 rounded-full blur-3xl" />
+        <div className="absolute -top-24 -right-24 w-72 h-72 bg-amber-400/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl" />
 
         <div
@@ -467,7 +467,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                 <h3 className="text-3xl md:text-4xl font-bold text-white">
                   {project.title}
                 </h3>
-                <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold">
+                <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-amber-400/20 text-amber-400 text-xs font-semibold">
                   <FiStar size={12} /> Flagship
                 </span>
               </div>
@@ -482,7 +482,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                     key={tech.name}
                     className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-md text-sm text-gray-200"
                   >
-                    <span className="text-accent">{tech.icon}</span>
+                    <span className="text-amber-400">{tech.icon}</span>
                     {tech.name}
                   </span>
                 ))}
@@ -499,7 +499,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                     className="flex items-start gap-2 text-sm text-gray-300"
                   >
                     <FiKey
-                      className="text-accent mt-0.5 flex-shrink-0"
+                      className="text-amber-400 mt-0.5 flex-shrink-0"
                       size={14}
                     />
                     <span>{feature}</span>
@@ -514,7 +514,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 px-5 py-2.5 bg-accent hover:bg-lightBlue text-white rounded-full font-medium shadow-lg shadow-accent/30"
+                  className="flex items-center gap-2 px-5 py-2.5 bg-accentSolid hover:bg-lightBlue text-white rounded-full font-medium shadow-lg shadow-accentSolid/30"
                 >
                   <FiExternalLink /> Live Demo
                 </motion.a>
@@ -573,7 +573,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
           </div>
 
           <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 text-sm text-gray-400">
-            <FiCpu className="text-accent flex-shrink-0" />
+            <FiCpu className="text-amber-400 flex-shrink-0" />
             <span>
               100M+ LLM tokens processed in production via an OpenAI +
               LangGraph agent architecture
@@ -618,7 +618,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-accent via-blue-500 to-purple-500 rounded-b-full"></div>
 
       {project.featured && (
-        <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-accent/90 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+        <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-accentSolid/90 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
           <FiStar size={10} /> Flagship
         </div>
       )}
@@ -635,9 +635,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           >
-            <div className="absolute inset-0 bg-accent/30 rounded-full blur-xl"></div>
+            <div className="absolute inset-0 bg-amber-400/30 rounded-full blur-xl"></div>
             <div className="bg-gray-800/80 backdrop-blur-sm p-4 rounded-full shadow-xl inline-block">
-              <FiServer className="text-5xl text-accent" />
+              <FiServer className="text-5xl text-amber-400" />
             </div>
           </motion.div>
           <p className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -793,7 +793,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           href={project.liveDemo}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-4 py-2 bg-accent/90 hover:bg-accent text-white rounded-full transition-colors"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-accentSolid/90 hover:bg-accentSolid text-white rounded-full transition-colors"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

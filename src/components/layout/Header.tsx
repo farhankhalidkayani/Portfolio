@@ -103,7 +103,7 @@ const Header: React.FC<HeaderProps> = () => {
               smooth={true}
               offset={-70}
               duration={500}
-              className="ml-4 inline-flex items-center px-4 py-2 rounded-full border border-accent text-accent text-sm font-medium hover:bg-accent hover:text-white transition-colors cursor-pointer"
+              className="ml-4 inline-flex items-center px-4 py-2 rounded-full border border-accent text-accent text-sm font-medium hover:bg-accentSolid hover:border-accentSolid hover:text-white transition-colors cursor-pointer"
             >
               Let's Talk
             </ScrollLink>

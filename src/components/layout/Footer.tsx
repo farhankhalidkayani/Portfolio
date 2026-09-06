@@ -137,7 +137,7 @@ const Footer: React.FC = () => {
         {/* Back to top button */}
         <motion.button
           onClick={scrollToTop}
-          className="absolute right-8 bottom-8 p-3 rounded-full bg-accent/90 text-white shadow-lg hover:bg-accent transition-colors duration-300 hover:shadow-xl"
+          className="absolute right-8 bottom-8 p-3 rounded-full bg-accentSolid/90 text-white shadow-lg hover:bg-accentSolid transition-colors duration-300 hover:shadow-xl"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           initial={{ opacity: 0, y: 20 }}
