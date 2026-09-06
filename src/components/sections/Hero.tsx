@@ -26,15 +26,15 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-accent font-mono text-lg md:text-xl mb-4 flex items-center">
+            <p className="text-accent font-mono text-lg md:text-xl mb-4 flex items-center">
               <span className="bg-accent/10 dark:bg-accent/20 py-1 px-3 rounded-full">
                 Hello, I'm
               </span>
-            </h2>
+            </p>
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-6xl font-bold text-primary dark:text-white mb-6 relative"
+            className="text-[clamp(2.25rem,1.5rem+3vw,3.75rem)] font-bold text-primary dark:text-white mb-6 relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -169,8 +169,10 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer z-10"
+      <motion.button
+        type="button"
+        aria-label="Scroll to About section"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}
@@ -180,20 +182,23 @@ const Hero: React.FC = () => {
             ?.scrollIntoView({ behavior: "smooth" });
         }}
       >
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-medium">
+        <span className="text-sm text-gray-600 dark:text-gray-400 mb-2 font-medium">
           Scroll Down
-        </p>
-        <motion.div
-          className="bg-gray-200/70 backdrop-blur-sm dark:bg-gray-700/70 rounded-full p-2 hover:bg-accentSolid hover:text-white transition-colors hover:scale-110"
+        </span>
+        <motion.span
+          className="bg-gray-200/70 backdrop-blur-sm dark:bg-gray-700/70 rounded-full p-2 hover:bg-accentSolid hover:text-white transition-colors hover:scale-110 inline-flex"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
-          <FiArrowDown className="text-accent hover:text-white" size={24} />
-        </motion.div>
-      </motion.div>
+          <FiArrowDown aria-hidden="true" className="text-accent hover:text-white" size={24} />
+        </motion.span>
+      </motion.button>
 
       {/* Backend-themed decorative elements */}
-      <div className="hidden md:block absolute right-10 top-1/3 transform -translate-y-1/2 z-10">
+      <div
+        aria-hidden="true"
+        className="hidden md:block absolute right-10 top-1/3 transform -translate-y-1/2 z-10"
+      >
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -211,7 +216,10 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Tech icons */}
-      <div className="absolute bottom-40 right-10 hidden md:flex flex-col gap-8 opacity-20">
+      <div
+        aria-hidden="true"
+        className="absolute bottom-40 right-10 hidden md:flex flex-col gap-8 opacity-20"
+      >
         <FiServer size={30} className="text-accent" />
         <FiDatabase size={30} className="text-accent" />
         <FiCode size={30} className="text-accent" />

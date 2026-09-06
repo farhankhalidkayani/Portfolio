@@ -30,7 +30,7 @@
 
 /* Heading styles */
 .section-heading {
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
   font-weight: 700;
   color: #0f172a;
   position: relative;
@@ -98,6 +98,18 @@
   transition-property: color, background-color, border-color;
   transition-duration: 200ms;
   transition-timing-function: ease-in-out;
+}
+
+/* Respect OS-level reduced-motion preference for CSS-driven animations.
+   Framer Motion animations are handled separately via <MotionConfig reducedMotion="user"> in App.tsx —
+   this covers Tailwind's animate-pulse/animate-ping/animate-bounce utilities, which aren't Framer Motion. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-ping,
+  .animate-bounce,
+  .animate-spin {
+    animation: none !important;
+  }
 }
 
 /* Custom scrollbar */

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import "./App.css";
 
 // Layout Components
@@ -38,25 +38,27 @@ function App() {
   }, [darkMode]);
 
   return (
-    <div
-      className={`min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 bg-noise ${
-        darkMode ? "dark" : ""
-      }`}
-    >
-      <ScrollProgress />
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <main>
-        <AnimatePresence>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Contact />
-        </AnimatePresence>
-      </main>
-      <Footer />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div
+        className={`min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 bg-noise ${
+          darkMode ? "dark" : ""
+        }`}
+      >
+        <ScrollProgress />
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <main>
+          <AnimatePresence>
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Experience />
+            <Contact />
+          </AnimatePresence>
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   );
 }
 
