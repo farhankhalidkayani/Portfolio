@@ -9,4 +9,3 @@ createRoot(document.getElementById("root")!).render(
     <App />
   </StrictMode>
 );
-export const __T = "bg-keyA bg-keyB bg-keyC bg-keyD";

@@ -2,13 +2,29 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
-html {
-  scroll-behavior: smooth;
+/*
+ * Theme tokens live here (Tailwind v4's native mechanism) rather than in
+ * tailwind.config.js's `theme.extend` — that legacy JS path proved unreliable
+ * for custom keys in this project's setup (utilities silently failed to
+ * generate for some keys). @theme is the first-class, reliable v4 API.
+ */
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
+
+  --color-primary: #0f172a;
+  --color-secondary: #1e293b;
+  /* amber-700: ~5:1 contrast on white/gray-50 surfaces (WCAG AA), light-mode default */
+  --color-accent: #b45309;
+  /* Fixed shade for solid CTA buttons/fills that carry white text — needs to
+     stay legible regardless of the page's light/dark theme. */
+  --color-accentSolid: #b45309;
+  --color-lightBlue: #d97706;
+  --color-darkBlue: #78350f;
 }
 
-:root {
-  /* amber-700: ~5:1 contrast on white/gray-50 surfaces (WCAG AA) */
-  --color-accent: #b45309;
+html {
+  scroll-behavior: smooth;
 }
 
 .dark {
