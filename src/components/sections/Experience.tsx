@@ -284,7 +284,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             <ul className="space-y-2">
               {experience.responsibilities.map((responsibility, idx) => (
                 <li key={idx} className="flex items-start">
-                  <span className="text-accent mt-1 mr-3">
+                  <span aria-hidden="true" className="text-accent mt-1 mr-3">
                     {responsibility.icon}
                   </span>
                   <span className="text-gray-600 dark:text-gray-300">

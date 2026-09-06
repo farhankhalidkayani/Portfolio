@@ -90,7 +90,7 @@ const Header: React.FC<HeaderProps> = () => {
         </motion.div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2">
+        <nav aria-label="Primary" className="hidden md:flex items-center gap-2">
           <NavLinks activeSection={activeSection} />
           <motion.div
             initial={{ opacity: 0 }}
@@ -116,8 +116,14 @@ const Header: React.FC<HeaderProps> = () => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2"
             aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
-            {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            {mobileMenuOpen ? (
+              <FiX aria-hidden="true" size={24} />
+            ) : (
+              <FiMenu aria-hidden="true" size={24} />
+            )}
           </button>
         </div>
       </div>
@@ -125,12 +131,13 @@ const Header: React.FC<HeaderProps> = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <motion.div
+          id="mobile-menu"
           className="md:hidden bg-white dark:bg-gray-800 shadow-lg"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
         >
-          <nav className="flex flex-col py-4">
+          <nav aria-label="Mobile" className="flex flex-col py-4">
             <NavLinks
               mobile
               setMobileMenuOpen={setMobileMenuOpen}
@@ -187,6 +194,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
               smooth={true}
               offset={-70}
               duration={500}
+              aria-current={isActive ? "true" : undefined}
               className={`relative font-medium text-sm transition-colors cursor-pointer ${
                 mobile
                   ? `py-3 px-6 flex items-center gap-2 border-b border-gray-100 dark:border-gray-700 ${
@@ -202,7 +210,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
               }`}
               onClick={handleClick}
             >
-              <span className="font-mono text-[11px] text-accent/70">
+              <span aria-hidden="true" className="font-mono text-[11px] text-accent/70">
                 {link.num}.
               </span>
               {link.name}

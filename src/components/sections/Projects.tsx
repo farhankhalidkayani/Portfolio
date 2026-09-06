@@ -253,6 +253,7 @@ const Projects: React.FC = () => {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
+                aria-pressed={activeTab === tab.id}
                 className={`px-5 py-2 mx-1 rounded-full transition-all duration-300 ${
                   activeTab === tab.id
                     ? "bg-white dark:bg-gray-900 text-accent shadow-md font-medium"
@@ -297,7 +298,7 @@ const Projects: React.FC = () => {
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl"></div>
                 <div className="bg-white dark:bg-gray-800 p-5 rounded-full border border-gray-200 dark:border-gray-700 shadow-lg relative z-10">
-                  <FiServer className="text-accent text-4xl" />
+                  <FiServer aria-hidden="true" className="text-accent text-4xl" />
                 </div>
               </div>
             </div>
@@ -387,7 +388,7 @@ const StatTile: React.FC<StatTileProps> = ({
       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="relative z-10">
         <div className="flex items-center gap-2 mb-3 text-amber-400">
-          {icon}
+          <span aria-hidden="true">{icon}</span>
           <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-300">
             {label}
           </span>
@@ -398,7 +399,9 @@ const StatTile: React.FC<StatTileProps> = ({
           {suffix}
         </div>
         <div className="mt-1.5 text-xs font-medium flex items-center gap-1 text-emerald-400">
-          {trend === "down" ? <FiTrendingDown /> : <FiTrendingUp />}
+          <span aria-hidden="true">
+            {trend === "down" ? <FiTrendingDown /> : <FiTrendingUp />}
+          </span>
           {note}
         </div>
       </div>
@@ -468,7 +471,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                   {project.title}
                 </h3>
                 <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-amber-400/20 text-amber-400 text-xs font-semibold">
-                  <FiStar size={12} /> Flagship
+                  <FiStar aria-hidden="true" size={12} /> Flagship
                 </span>
               </div>
 
@@ -482,7 +485,9 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                     key={tech.name}
                     className="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-md text-sm text-gray-200"
                   >
-                    <span className="text-amber-400">{tech.icon}</span>
+                    <span aria-hidden="true" className="text-amber-400">
+                      {tech.icon}
+                    </span>
                     {tech.name}
                   </span>
                 ))}
@@ -499,6 +504,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                     className="flex items-start gap-2 text-sm text-gray-300"
                   >
                     <FiKey
+                      aria-hidden="true"
                       className="text-amber-400 mt-0.5 flex-shrink-0"
                       size={14}
                     />
@@ -516,7 +522,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center gap-2 px-5 py-2.5 bg-accentSolid hover:bg-lightBlue text-white rounded-full font-medium shadow-lg shadow-accentSolid/30"
                 >
-                  <FiExternalLink /> Live Demo
+                  <FiExternalLink aria-hidden="true" /> Live Demo
                 </motion.a>
                 <motion.a
                   href={project.github}
@@ -526,7 +532,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full font-medium border border-white/10"
                 >
-                  <FiGithub /> GitHub
+                  <FiGithub aria-hidden="true" /> GitHub
                 </motion.a>
               </div>
             </div>
@@ -573,7 +579,7 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
           </div>
 
           <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 text-sm text-gray-400">
-            <FiCpu className="text-amber-400 flex-shrink-0" />
+            <FiCpu aria-hidden="true" className="text-amber-400 flex-shrink-0" />
             <span>
               100M+ LLM tokens processed in production via an OpenAI +
               LangGraph agent architecture
@@ -619,7 +625,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 
       {project.featured && (
         <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2.5 py-1 rounded-full bg-accentSolid/90 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
-          <FiStar size={10} /> Flagship
+          <FiStar aria-hidden="true" size={10} /> Flagship
         </div>
       )}
 
@@ -637,7 +643,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           >
             <div className="absolute inset-0 bg-amber-400/30 rounded-full blur-xl"></div>
             <div className="bg-gray-800/80 backdrop-blur-sm p-4 rounded-full shadow-xl inline-block">
-              <FiServer className="text-5xl text-amber-400" />
+              <FiServer aria-hidden="true" className="text-5xl text-amber-400" />
             </div>
           </motion.div>
           <p className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -662,6 +668,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         <div className="mb-5">
           <h4 className="text-sm font-medium text-primary dark:text-white mb-2 flex items-center">
             <svg
+              aria-hidden="true"
               className="w-4 h-4 mr-2 text-accent"
               viewBox="0 0 24 24"
               fill="none"
@@ -684,7 +691,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center bg-gray-50 dark:bg-gray-700/50 px-3 py-1.5 rounded-md text-sm border border-gray-200 dark:border-gray-700 shadow-sm"
               >
-                <span className="mr-2 text-accent">{tech.icon}</span>
+                <span aria-hidden="true" className="mr-2 text-accent">
+                  {tech.icon}
+                </span>
                 <span className="text-gray-700 dark:text-gray-300">
                   {tech.name}
                 </span>
@@ -697,6 +706,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         <div className="mb-5">
           <h4 className="text-sm font-medium text-primary dark:text-white mb-2 flex items-center">
             <svg
+              aria-hidden="true"
               className="w-4 h-4 mr-2 text-accent"
               viewBox="0 0 24 24"
               fill="none"
@@ -722,7 +732,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 transition={{ delay: 0.1 * idx, duration: 0.4 }}
                 className="flex items-center text-gray-600 dark:text-gray-300 text-sm group"
               >
-                <span className="mr-2 p-1 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                <span
+                  aria-hidden="true"
+                  className="mr-2 p-1 rounded-full bg-accent/10 group-hover:bg-accent/20 transition-colors"
+                >
                   <FiKey className="text-accent" size={12} />
                 </span>
                 <span>{feature}</span>
@@ -735,11 +748,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         <button
           className="mt-2 px-4 py-2 rounded-full text-sm font-medium bg-gray-50 dark:bg-gray-700/50 text-primary dark:text-gray-300 hover:bg-accent/10 hover:text-accent dark:hover:bg-accent/20 dark:hover:text-accent transition-colors w-full flex items-center justify-center group"
           onClick={() => setShowDetails(!showDetails)}
+          aria-expanded={showDetails}
+          aria-controls={`architecture-details-${project.id}`}
         >
           <span className="mr-1">
             {showDetails ? "Hide Details" : "Show Architecture"}
           </span>
           <svg
+            aria-hidden="true"
             className={`w-4 h-4 transition-transform duration-300 transform ${
               showDetails ? "rotate-180" : ""
             }`}
@@ -759,13 +775,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         {/* Architecture details */}
         {showDetails && (
           <motion.div
+            id={`architecture-details-${project.id}`}
             className="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             transition={{ duration: 0.3 }}
           >
             <h4 className="text-sm font-medium text-primary dark:text-white mb-3 flex items-center">
-              <FiDatabase className="mr-2 text-accent" />
+              <FiDatabase aria-hidden="true" className="mr-2 text-accent" />
               Architecture Details
             </h4>
             <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
@@ -785,7 +802,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <FiGithub size={18} />
+          <FiGithub aria-hidden="true" size={18} />
           <span className="font-medium">GitHub</span>
         </motion.a>
 
@@ -797,7 +814,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <FiExternalLink size={18} />
+          <FiExternalLink aria-hidden="true" size={18} />
           <span className="font-medium">Live Demo</span>
         </motion.a>
       </div>

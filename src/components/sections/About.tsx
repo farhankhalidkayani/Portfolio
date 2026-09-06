@@ -167,7 +167,9 @@ const SpecializationCard: React.FC<SpecializationCardProps> = ({
 }) => {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
-      <div className="text-accent text-2xl mb-4">{icon}</div>
+      <div aria-hidden="true" className="text-accent text-2xl mb-4">
+        {icon}
+      </div>
       <h4 className="text-lg font-semibold mb-2 text-primary dark:text-white">
         {title}
       </h4>

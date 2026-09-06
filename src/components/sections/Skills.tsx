@@ -158,7 +158,9 @@ const Skills: React.FC = () => {
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300 hover:border-accent/50 hover:text-accent dark:hover:text-accent transition-colors"
                   >
-                    <span className="text-accent">{skill.icon}</span>
+                    <span aria-hidden="true" className="text-accent">
+                      {skill.icon}
+                    </span>
                     {skill.name}
                   </motion.span>
                 ))}

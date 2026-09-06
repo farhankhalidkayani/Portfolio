@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiArrowUp } from "react-icons/fi";
+import { Link as ScrollLink } from "react-scroll";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -53,7 +54,7 @@ const Footer: React.FC = () => {
               className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-all duration-300 transform hover:scale-110 p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:shadow-md"
               aria-label="GitHub"
             >
-              <FiGithub size={22} />
+              <FiGithub aria-hidden="true" size={22} />
             </a>
             <a
               href="https://www.linkedin.com/in/farhankhalidkayani/"
@@ -62,14 +63,14 @@ const Footer: React.FC = () => {
               className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-all duration-300 transform hover:scale-110 p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:shadow-md"
               aria-label="LinkedIn"
             >
-              <FiLinkedin size={22} />
+              <FiLinkedin aria-hidden="true" size={22} />
             </a>
             <a
               href="mailto:rj.farhan4232@gmail.com"
               className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-all duration-300 transform hover:scale-110 p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:shadow-md"
               aria-label="Email"
             >
-              <FiMail size={22} />
+              <FiMail aria-hidden="true" size={22} />
             </a>
           </motion.div>
         </div>
@@ -89,12 +90,15 @@ const Footer: React.FC = () => {
                 "Contact",
               ].map((item) => (
                 <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors text-sm"
+                  <ScrollLink
+                    to={item.toLowerCase()}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors text-sm cursor-pointer"
                   >
                     {item}
-                  </a>
+                  </ScrollLink>
                 </li>
               ))}
             </ul>
@@ -145,7 +149,7 @@ const Footer: React.FC = () => {
           transition={{ delay: 1 }}
           aria-label="Scroll to top"
         >
-          <FiArrowUp size={20} />
+          <FiArrowUp aria-hidden="true" size={20} />
         </motion.button>
       </div>
     </motion.footer>

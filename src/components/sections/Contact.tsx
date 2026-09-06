@@ -131,12 +131,14 @@ const Contact: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-20 h-20 bg-accent/5 rounded-tr-full"></div>
 
             <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white flex items-center">
-              <FiSend className="text-accent mr-3" />
+              <FiSend aria-hidden="true" className="text-accent mr-3" />
               Send me a message
             </h3>
 
             {formStatus.submitted && (
               <motion.div
+                role="status"
+                aria-live="polite"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={`mb-6 p-4 rounded-md ${
@@ -147,9 +149,9 @@ const Contact: React.FC = () => {
               >
                 <p className="flex items-center">
                   {formStatus.success ? (
-                    <FiCheckCircle className="mr-2" />
+                    <FiCheckCircle aria-hidden="true" className="mr-2" />
                   ) : (
-                    <FiSend className="mr-2" />
+                    <FiSend aria-hidden="true" className="mr-2" />
                   )}
                   {formStatus.message}
                 </p>
@@ -240,11 +242,13 @@ const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
+                aria-busy={loading}
                 className="w-full px-6 py-3 bg-accentSolid hover:bg-lightBlue text-white rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accentSolid focus:ring-offset-2 flex items-center justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1"
               >
                 {loading ? (
                   <span className="flex items-center">
                     <svg
+                      aria-hidden="true"
                       className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -268,7 +272,7 @@ const Contact: React.FC = () => {
                   </span>
                 ) : (
                   <span className="flex items-center">
-                    <FiSend className="mr-2" />
+                    <FiSend aria-hidden="true" className="mr-2" />
                     Send Message
                   </span>
                 )}
@@ -288,7 +292,7 @@ const Contact: React.FC = () => {
               <div className="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-accent/5 rounded-full"></div>
 
               <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white flex items-center">
-                <FiMapPin className="text-accent mr-3" />
+                <FiMapPin aria-hidden="true" className="text-accent mr-3" />
                 Contact Information
               </h3>
 
@@ -344,7 +348,7 @@ const Contact: React.FC = () => {
                   href="mailto:rj.farhan4232@gmail.com?subject=Job%20Opportunity"
                   className="inline-flex items-center px-4 py-2 bg-white text-accentSolid rounded-md hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 font-medium"
                 >
-                  <FiMail className="mr-2" />
+                  <FiMail aria-hidden="true" className="mr-2" />
                   Get in touch
                 </a>
               </div>
@@ -369,15 +373,19 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
   content,
   link,
 }) => {
+  const isExternal = link.startsWith("http");
+
   return (
     <motion.a
       href={link}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="flex items-start group p-3 rounded-lg hover:bg-accent/5 transition-all duration-300"
       whileHover={{ x: 5 }}
     >
-      <div className="text-accent text-xl mt-1 mr-4 transition-colors bg-accent/10 p-2 rounded-full">
+      <div
+        aria-hidden="true"
+        className="text-accent text-xl mt-1 mr-4 transition-colors bg-accent/10 p-2 rounded-full"
+      >
         {icon}
       </div>
       <div>
