@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FiServer, FiDatabase, FiCode, FiGitBranch } from "react-icons/fi";
+import { FiCpu, FiDatabase, FiCode, FiGitBranch } from "react-icons/fi";
 
 const About: React.FC = () => {
   return (
@@ -37,13 +37,13 @@ const About: React.FC = () => {
 
             <div className="space-y-4 text-gray-600 dark:text-gray-300">
               <p>
-                Backend-focused Software Engineer and Technology Consultant
+                AI & Full-Stack Software Engineer and Technology Consultant
                 with 2+ years of production experience building scalable SaaS
-                and AI-powered platforms. I specialize in{" "}
-                <strong>Node.js, SQL/MySQL, Redis, and AWS</strong>, with
-                hands-on work architecting a multi-tenant automotive CRM,
+                and AI-powered platforms end-to-end. I specialize in{" "}
+                <strong>LLM/agent workflows (OpenAI, LangGraph), Node.js, and React/Next.js</strong>,
+                with hands-on work architecting a multi-tenant automotive CRM,
                 optimizing production backend/database workloads, and building
-                LLM-powered agent workflows with OpenAI and LangGraph.
+                full-stack AI features from database to UI.
               </p>
 
               <p>
@@ -80,7 +80,7 @@ const About: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right Side: Backend Focus Areas */}
+          {/* Right Side: Focus Areas */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -88,14 +88,14 @@ const About: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-2xl font-bold mb-6 text-primary dark:text-white">
-              Backend Specializations
+              Core Specializations
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <SpecializationCard
-                icon={<FiServer />}
-                title="Server Architecture"
-                description="Designing and implementing efficient server architectures focusing on scalability, security, and performance."
+                icon={<FiCpu />}
+                title="AI & LLM Engineering"
+                description="Building production LLM/agent workflows with OpenAI and LangGraph—prompt engineering, context management, and agent architecture."
               />
 
               <SpecializationCard
@@ -106,8 +106,8 @@ const About: React.FC = () => {
 
               <SpecializationCard
                 icon={<FiCode />}
-                title="API Development"
-                description="Building RESTful and GraphQL APIs with thorough documentation, proper error handling, and validation."
+                title="Full-Stack Development"
+                description="Building end-to-end features with React/Next.js frontends and Node.js REST APIs, from UI to database."
               />
 
               <SpecializationCard

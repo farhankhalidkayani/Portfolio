@@ -85,7 +85,7 @@ const Header: React.FC<HeaderProps> = () => {
             Farhan<span className="text-accent">.</span>Khalid
           </ScrollLink>
           <span className="hidden sm:block text-[10px] font-mono text-gray-400 dark:text-gray-500 tracking-[0.15em] mt-0.5">
-            BACKEND &amp; AI ENGINEER
+            AI &amp; FULL-STACK ENGINEER
           </span>
         </motion.div>
 

@@ -24,18 +24,28 @@ import {
   SiOpenai,
   SiSalesforce,
   SiDocker,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
 } from "react-icons/si";
 
 const Skills: React.FC = () => {
   // Group skills by category (aligned with resume)
   const skillCategories = [
     {
-      title: "Languages",
+      title: "AI / LLM Engineering",
       skills: [
-        { name: "JavaScript", icon: <SiJavascript /> },
-        { name: "SQL", icon: <FaDatabase /> },
-        { name: "Python", icon: <SiPython /> },
-        { name: "TypeScript", icon: <SiTypescript /> },
+        { name: "OpenAI API", icon: <SiOpenai /> },
+        { name: "Prompt Engineering", icon: <FaTools /> },
+        { name: "LangGraph / AI Agents", icon: <FaPuzzlePiece /> },
+      ],
+    },
+    {
+      title: "Frontend",
+      skills: [
+        { name: "React", icon: <SiReact /> },
+        { name: "Next.js", icon: <SiNextdotjs /> },
+        { name: "Tailwind CSS", icon: <SiTailwindcss /> },
       ],
     },
     {
@@ -50,20 +60,21 @@ const Skills: React.FC = () => {
       ],
     },
     {
+      title: "Languages",
+      skills: [
+        { name: "JavaScript", icon: <SiJavascript /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
+        { name: "SQL", icon: <FaDatabase /> },
+        { name: "Python", icon: <SiPython /> },
+      ],
+    },
+    {
       title: "Databases",
       skills: [
         { name: "MySQL", icon: <SiMysql /> },
         { name: "Redis", icon: <SiRedis /> },
         { name: "PostgreSQL", icon: <SiPostgresql /> },
         { name: "MongoDB", icon: <SiMongodb /> },
-      ],
-    },
-    {
-      title: "AI / LLM Engineering",
-      skills: [
-        { name: "OpenAI API", icon: <SiOpenai /> },
-        { name: "Prompt Engineering", icon: <FaTools /> },
-        { name: "LangGraph / AI Agents", icon: <FaPuzzlePiece /> },
       ],
     },
     {
@@ -124,10 +135,10 @@ const Skills: React.FC = () => {
             ></div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
-            Backend engineering with Node.js, MySQL, and Redis; AI/LLM
-            application development with OpenAI and LangGraph; and production
-            experience across AWS infrastructure and integrations with
-            Salesforce, Stripe, Twilio, SendGrid, and Meta APIs.
+            AI/LLM application development with OpenAI and LangGraph;
+            full-stack engineering with React/Next.js and Node.js; and
+            production experience across AWS infrastructure and integrations
+            with Salesforce, Stripe, Twilio, SendGrid, and Meta APIs.
           </p>
         </motion.div>
 
@@ -180,7 +191,7 @@ const Skills: React.FC = () => {
           <div className="flex items-center mb-8">
             <div className="h-0.5 bg-accent flex-grow mr-4 hidden md:block"></div>
             <h3 className="text-2xl font-bold text-primary dark:text-white text-center">
-              Backend Development Areas of Expertise
+              Engineering Areas of Expertise
             </h3>
             <div className="h-0.5 bg-accent flex-grow ml-4 hidden md:block"></div>
           </div>

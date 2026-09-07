@@ -235,14 +235,14 @@ const Projects: React.FC = () => {
           <span className="inline-block py-1 px-3 rounded-full bg-accent/10 dark:bg-accent/20 text-accent text-sm font-semibold mb-3">
             PORTFOLIO
           </span>
-          <h2 className="section-heading mx-auto">Backend Projects</h2>
+          <h2 className="section-heading mx-auto">Featured Projects</h2>
           <div className="h-1 w-24 bg-accent mt-6 mb-6 mx-auto relative">
             <div className="absolute -top-[4px] left-[50%] w-3 h-3 bg-accent rounded-full"></div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
-            My projects showcase production experience building scalable
-            backend systems, AI/LLM-powered platforms, and integration-heavy
-            SaaS architectures.
+            My projects showcase production experience building AI/LLM-powered
+            platforms, full-stack applications, and integration-heavy SaaS
+            architectures.
           </p>
         </motion.div>
 

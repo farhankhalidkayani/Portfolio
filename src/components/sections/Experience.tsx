@@ -149,14 +149,14 @@ const Experience: React.FC = () => {
         >
           <div className="inline-block p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-bold mb-4 text-primary dark:text-white">
-              Backend Development Philosophy
+              Engineering Philosophy
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl">
-              I focus on building reliable, maintainable, and scalable backend
-              systems—combining clean code, security best practices, and
-              thoughtful architecture. Tech-stack agnostic with production
-              experience across Node.js, Python, and Salesforce to deliver
-              solutions that grow with business needs.
+              I focus on building reliable, maintainable AI-powered products
+              end-to-end—combining clean code, thoughtful architecture, and
+              production LLM/agent workflows. Full-stack across Node.js,
+              React/Next.js, and Python to deliver solutions that grow with
+              business needs.
             </p>
           </div>
         </motion.div>

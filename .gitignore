@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .env
+
+# graphify knowledge graph (regenerated via git hooks / graphify update)
+graphify-out
