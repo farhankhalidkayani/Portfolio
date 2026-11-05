@@ -10,23 +10,14 @@ import {
   FaAws,
 } from "react-icons/fa";
 import {
-  SiExpress,
-  SiFastify,
+  SiNestjs,
   SiMysql,
-  SiMongodb,
-  SiPostgresql,
-  SiRedis,
   SiPython,
-  SiFastapi,
   SiTypescript,
   SiJavascript,
   SiStripe,
   SiOpenai,
   SiSalesforce,
-  SiDocker,
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
 } from "react-icons/si";
 
 const Skills: React.FC = () => {
@@ -35,27 +26,28 @@ const Skills: React.FC = () => {
     {
       title: "AI / LLM Engineering",
       skills: [
-        { name: "OpenAI API", icon: <SiOpenai /> },
-        { name: "Prompt Engineering", icon: <FaTools /> },
-        { name: "LangGraph / AI Agents", icon: <FaPuzzlePiece /> },
+        { name: "LangGraph", icon: <FaPuzzlePiece /> },
+        { name: "Production LLM Pipelines", icon: <SiOpenai /> },
+        { name: "AI Chat Agents", icon: <FaPuzzlePiece /> },
+        { name: "AI Voice Calling", icon: <FaTools /> },
       ],
     },
     {
-      title: "Frontend",
+      title: "Architecture",
       skills: [
-        { name: "React", icon: <SiReact /> },
-        { name: "Next.js", icon: <SiNextdotjs /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+        { name: "Microservices", icon: <FaServer /> },
+        { name: "Modular Monoliths", icon: <FaServer /> },
+        { name: "Event-Driven & Serverless", icon: <FaAws /> },
+        { name: "Pub/Sub & WebSockets", icon: <FaPuzzlePiece /> },
+        { name: "Multi-tenant SaaS", icon: <FaDatabase /> },
       ],
     },
     {
       title: "Backend & APIs",
       skills: [
         { name: "Node.js", icon: <FaNode /> },
-        { name: "Express", icon: <SiExpress /> },
-        { name: "Fastify", icon: <SiFastify /> },
+        { name: "NestJS", icon: <SiNestjs /> },
         { name: "REST APIs", icon: <FaServer /> },
-        { name: "FastAPI", icon: <SiFastapi /> },
         { name: "JWT & OAuth", icon: <FaTools /> },
       ],
     },
@@ -72,17 +64,19 @@ const Skills: React.FC = () => {
       title: "Databases",
       skills: [
         { name: "MySQL", icon: <SiMysql /> },
-        { name: "Redis", icon: <SiRedis /> },
-        { name: "PostgreSQL", icon: <SiPostgresql /> },
-        { name: "MongoDB", icon: <SiMongodb /> },
+        { name: "Amazon RDS (Performance Insights)", icon: <FaAws /> },
+        { name: "TypeORM", icon: <FaDatabase /> },
+        { name: "Drizzle ORM", icon: <FaDatabase /> },
       ],
     },
     {
       title: "Cloud & Infrastructure",
       skills: [
-        { name: "AWS (RDS, CloudFront, ECR)", icon: <FaAws /> },
-        { name: "Git & GitHub", icon: <FaGitAlt /> },
-        { name: "Docker", icon: <SiDocker /> },
+        { name: "ECS / EC2 / Fargate", icon: <FaAws /> },
+        { name: "Lambda / API Gateway / SQS / SES", icon: <FaAws /> },
+        { name: "ALB / VPC / RDS / AWS Backup", icon: <FaAws /> },
+        { name: "CI/CD", icon: <FaGitAlt /> },
+        { name: "Cost Optimization", icon: <FaTools /> },
       ],
     },
     {
@@ -90,7 +84,8 @@ const Skills: React.FC = () => {
       skills: [
         { name: "Stripe", icon: <SiStripe /> },
         { name: "Salesforce", icon: <SiSalesforce /> },
-        { name: "Twilio / SendGrid / Meta", icon: <FaPuzzlePiece /> },
+        { name: "Twilio / SendGrid", icon: <FaPuzzlePiece /> },
+        { name: "Google Calendar / OAuth", icon: <FaPuzzlePiece /> },
       ],
     },
   ];
@@ -135,10 +130,9 @@ const Skills: React.FC = () => {
             ></div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
-            AI/LLM application development with OpenAI and LangGraph;
-            full-stack engineering with React/Next.js and Node.js; and
-            production experience across AWS infrastructure and integrations
-            with Salesforce, Stripe, Twilio, SendGrid, and Meta APIs.
+            Node.js/TypeScript backends, AWS infrastructure, and
+            LangGraph-based LLM systems—plus code review, QA, root cause
+            analysis, mentoring and technical hiring.
           </p>
         </motion.div>
 
@@ -199,27 +193,27 @@ const Skills: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <ExpertiseCard
               title="Database Performance"
-              description="Diagnosing production bottlenecks with AWS RDS Performance Insights and optimizing queries—reduced DB CPU from ~99.9% to ~20% and chat latency from ~45s to ~3s."
+              description="Diagnosing bottlenecks with RDS Performance Insights—cut primary MySQL CPU ~38% → ~15% and read IOPS ~90%, and peak RDS CPU from ~99.9% to ~20%."
             />
 
             <ExpertiseCard
               title="AI Agent Architecture"
-              description="Designing LLM-powered workflows with OpenAI and LangGraph—refactored a 100+ page monolithic prompt into a modular, maintainable agent graph."
+              description="LangGraph call and chat agents in production: 6,091 appointments booked and ~28,100 customers engaged in ~5 months on one dealer account."
             />
 
             <ExpertiseCard
-              title="Cloud Cost Optimization"
-              description="Auditing AWS infrastructure to identify and decommission unused resources—cut cloud spend by ~$1,100/month."
+              title="Serverless & Cost Optimization"
+              description="Event platform on API Gateway, Lambda and SQS (~32M events/month, zero Lambda errors); ~$1,100/month saved by removing unused resources."
             />
 
             <ExpertiseCard
               title="Multi-tenant SaaS"
-              description="Building multi-tenant CRM architecture handling hundreds of leads/day/client across messaging, email, and social channels."
+              description="Multi-tenant CRM architecture serving leads, bookings, AI agents, a power dialer and eSign across 14 ECS microservices."
             />
 
             <ExpertiseCard
               title="Third-Party Integrations"
-              description="Production integrations with Salesforce, Stripe, Twilio, SendGrid, Meta, and automotive data APIs."
+              description="Production integrations with Salesforce, Stripe, Twilio, SendGrid and Google Calendar."
             />
 
             <ExpertiseCard

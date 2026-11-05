@@ -52,10 +52,10 @@ const Hero: React.FC = () => {
             <Typewriter
               options={{
                 strings: [
-                  "AI Engineer",
+                  "Senior Software Engineer",
                   "Full-Stack Engineer",
-                  "LLM/Agent Systems",
-                  "Technology Consultant",
+                  "AWS Cloud Architect",
+                  "AI & LLM Systems",
                 ],
                 autoStart: true,
                 loop: true,
@@ -69,12 +69,11 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            AI & Full-Stack Software Engineer with 2+ years building
-            production SaaS and LLM-powered platforms end-to-end. I specialize
-            in OpenAI/LangGraph agent workflows, Node.js and React/Next.js,
-            with production work spanning a multi-tenant automotive CRM,
-            LangGraph-based AI agents, and integrations across Salesforce,
-            Stripe, Twilio, SendGrid, Meta, and OpenAI.
+            Senior software engineer with 4.5+ years shipping production
+            backend, cloud and AI systems for multi-tenant CRM and automation
+            platforms. I work across Node.js/TypeScript services, AWS
+            infrastructure and LangGraph-based LLM workflows. Currently CTO at
+            Hatzs Dimensions and still hands-on in architecture and code.
           </motion.p>
 
           <motion.div
@@ -150,12 +149,12 @@ const Hero: React.FC = () => {
             transition={{ delay: 1, duration: 0.6 }}
           >
             {[
-              "React / Next.js",
-              "Node.js",
-              "OpenAI / LangGraph",
               "TypeScript",
-              "MySQL",
-              "AWS",
+              "Node.js / NestJS",
+              "AWS (ECS, Lambda, SQS)",
+              "LangGraph",
+              "MySQL / RDS",
+              "Microservices",
             ].map((tech) => (
               <span
                 key={tech}
@@ -206,9 +205,9 @@ const Hero: React.FC = () => {
             className="text-5xl font-mono text-primary dark:text-white whitespace-pre"
           >
             {`{
-  "role": "AI & Full-Stack Engineer",
-  "focus": "LLM Agents + React/Next.js",
-  "stack": "Node.js | React | OpenAI"
+  "role": "Senior Software Engineer",
+  "focus": "AWS + AI Systems",
+  "stack": "TypeScript | AWS | LangGraph"
 }`}
           </motion.div>
         </div>

@@ -6,105 +6,90 @@ const Experience: React.FC = () => {
   // Define the work experiences
   const experiences = [
     {
-      title: "Technology Consultant",
+      title: "Chief Technology Officer",
       company: "Hatzs Dimensions",
-      period: "Nov 2025 – Present",
+      period: "Oct 2026 – Present",
       current: true,
       description:
-        "Serve as technical SME in client discovery and presales conversations, translating business requirements into CRM, AI, and integration architectures.",
+        "Set architecture standards, development practices and the technical roadmap across DealerIQ AI and Befer, while staying hands-on in architecture and code.",
       responsibilities: [
         {
-          text: "Participate in presales calls as a technical SME for prospective clients, scoping CRM, AI, and automation solutions",
-          icon: <FiCode />,
-        },
-        {
-          text: "Design backend and integration architectures for AI-powered CRM and lead engagement platforms",
+          text: "Run the production ECS cluster: 14 microservices (12 on EC2, 2 on Fargate) serving the CRM, AI voice and chat agents, power dialer and eSign",
           icon: <FiServer />,
         },
         {
-          text: "Refactored a 100+ page monolithic AI prompt into a modular LangGraph-based agent architecture for more reliable AI chat behavior",
-          icon: <FiActivity />,
+          text: "Own reliability and security, including automated database backups in AWS Backup vaults and protection of source code, systems and credentials",
+          icon: <FiDatabase />,
         },
         {
-          text: "Built a custom e-signature workflow integrated into Salesforce, replacing a third-party document signing platform",
-          icon: <FiActivity />,
-        },
-        {
-          text: "Collaborate directly with clients and product teams to gather requirements and design scalable solutions",
+          text: "Introduced code review, QA and root cause analysis practices; mentor engineers and run technical hiring",
           icon: <FiCode />,
         },
+        {
+          text: "Provide technical estimates, cost analysis and risk assessment to the CEO",
+          icon: <FiActivity />,
+        },
       ],
-      techStack: [
-        "Node.js",
-        "Salesforce",
-        "OpenAI",
-        "LangGraph",
-        "REST APIs",
-        "AWS",
+      techStack: ["AWS", "ECS", "Fargate", "AWS Backup", "TypeScript", "LangGraph"],
+    },
+    {
+      title: "Senior Software Engineer",
+      company: "Hatzs Dimensions",
+      period: "Aug 2024 – Oct 2026",
+      description:
+        "Built and maintained backend services for DealerIQ AI, a multi-tenant automotive CRM, on Node.js and AWS; technical SME in client discovery and presales.",
+      responsibilities: [
+        {
+          text: "Designed the serverless event pipeline (API Gateway, Lambda authorizer, SQS, dispatcher over WebSocket, HTTP and SES): ~7 ms auth, 15 ms ingestion and 71 ms dispatch at ~115 peak concurrency",
+          icon: <FiActivity />,
+        },
+        {
+          text: "Cleaned up bottlenecks in AI-generated code with missing indexes, rewritten slow queries and a dedicated read replica for IQ chat",
+          icon: <FiDatabase />,
+        },
+        {
+          text: "Led modernization of a large JavaScript backend toward a TypeScript modular monolith using Drizzle ORM",
+          icon: <FiCode />,
+        },
+        {
+          text: "Debugged and optimized production deployments across ECS, Fargate, ALB, VPC, RDS and CI/CD pipelines",
+          icon: <FiServer />,
+        },
       ],
+      techStack: ["TypeScript", "Drizzle ORM", "Lambda", "SQS", "API Gateway", "ECS", "RDS"],
     },
     {
       title: "Software Engineer",
       company: "Hatzs Dimensions",
-      period: "Jul 2025 – Nov 2025",
+      period: "May 2023 – Aug 2024",
       description:
-        "Owned backend performance, AI systems, and cloud infrastructure for DealerIQ AI, a multi-tenant automotive CRM processing ~400 leads/day/client.",
+        "Built backend services and APIs (Node.js, MySQL) for DealerIQ AI's lead management, booking, notification and automation workflows.",
       responsibilities: [
         {
-          text: "Optimized a production chat query from ~45s to ~3s (~93% reduction) by resolving backend/database bottlenecks",
-          icon: <FiActivity />,
-        },
-        {
-          text: "Used AWS RDS Performance Insights to reduce database CPU utilization from ~99.9% to ~20%",
+          text: "Cut peak CPU on production AWS RDS from ~99.9% to ~20% through query optimization and database tuning",
           icon: <FiDatabase />,
         },
         {
-          text: "Audited AWS infrastructure and decommissioned unused services, cutting cloud costs by ~$1,100/month",
+          text: "Reduced AWS costs by ~$1,100/month by removing unused resources and consolidating infrastructure",
           icon: <FiServer />,
         },
         {
-          text: "Built AI-powered chat and lead-engagement features processing 100M+ LLM tokens in production using OpenAI",
+          text: "Implemented JWT/OAuth authentication and integrations with payment gateways, messaging services and third-party CRMs",
           icon: <FiCode />,
         },
       ],
-      techStack: ["Node.js", "MySQL", "Redis", "AWS RDS", "OpenAI"],
+      techStack: ["Node.js", "MySQL", "AWS RDS", "JWT", "OAuth"],
     },
     {
       title: "Associate Software Engineer",
       company: "Hatzs Dimensions",
-      period: "Jan 2025 – Jul 2025",
+      period: "Apr 2022 – May 2023",
       description:
-        "Contributed to backend development of Befer AI, an AI-powered CRM platform supporting bookings, leads, and payments.",
+        "Contributed to the backend of Befer, an AI-powered CRM, during its migration from Bubble.io to a custom Node.js + MySQL backend.",
       responsibilities: [
         {
-          text: "Implemented secure authentication systems including Google OAuth and JWT authorization",
-          icon: <FiCode />,
-        },
-        {
-          text: "Integrated Stripe payments, Google Calendar scheduling, and email/SMS notification systems",
-          icon: <FiActivity />,
-        },
-        {
-          text: "Developed backend modules for reminders, automated workflows, and media uploads",
+          text: "Built backend modules on the new Node.js + MySQL stack as Befer moved off Bubble.io",
           icon: <FiServer />,
-        },
-      ],
-      techStack: ["Node.js", "Stripe", "OAuth", "JWT", "REST APIs"],
-    },
-    {
-      title: "Development Intern",
-      company: "Hatzs Dimensions",
-      period: "Nov 2024 – Jan 2025",
-      description:
-        "Started professional software development career with backend API development, debugging, and integration tasks.",
-      responsibilities: [
-        {
-          text: "Backend API development and debugging for production applications",
-          icon: <FiServer />,
-        },
-        {
-          text: "Integration tasks and database operations with Node.js and MySQL",
-          icon: <FiDatabase />,
         },
       ],
       techStack: ["Node.js", "MySQL", "REST APIs"],
@@ -130,9 +115,8 @@ const Experience: React.FC = () => {
           <h2 className="section-heading mx-auto">Work Experience</h2>
           <div className="h-1 w-24 bg-accent mt-6 mb-6 mx-auto"></div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
-            From Development Intern to Technology Consultant at Hatzs
-            Dimensions—building multi-tenant CRMs, AI-powered platforms, and
-            scalable backend systems.
+            From Associate Software Engineer to CTO at Hatzs Dimensions—building
+            multi-tenant CRMs, AI agents and cloud infrastructure on AWS.
           </p>
         </motion.div>
 
@@ -152,11 +136,10 @@ const Experience: React.FC = () => {
               Engineering Philosophy
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl">
-              I focus on building reliable, maintainable AI-powered products
-              end-to-end—combining clean code, thoughtful architecture, and
-              production LLM/agent workflows. Full-stack across Node.js,
-              React/Next.js, and Python to deliver solutions that grow with
-              business needs.
+              Measure first, then fix the real bottleneck. I build reliable,
+              cost-aware systems—clean TypeScript services, queue-decoupled AWS
+              infrastructure and production LLM workflows—backed by code
+              review, QA and root cause analysis.
             </p>
           </div>
         </motion.div>

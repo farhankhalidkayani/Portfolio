@@ -22,14 +22,14 @@ import {
 } from "react-icons/fi";
 import {
   SiNodedotjs,
-  SiExpress,
-  SiFastify,
   SiMysql,
-  SiPython,
-  SiFastapi,
   SiSalesforce,
   SiOpenai,
+  SiTypescript,
+  SiNestjs,
+  SiStripe,
 } from "react-icons/si";
+import { FaAws, FaPuzzlePiece } from "react-icons/fa";
 
 interface Project {
   id: number;
@@ -77,113 +77,114 @@ const Projects: React.FC = () => {
       id: 1,
       title: "DealerIQ AI",
       description:
-        "Multi-tenant automotive CRM integrating AI voice, chat, and messaging workflows. Processes ~400 incoming leads per day per client with automated AI engagement across calls, SMS, email, and social channels—backed by an AI chat service that has processed 100M+ LLM tokens in production.",
+        "Multi-tenant automotive CRM covering leads, bookings, AI voice and chat agents, a power dialer and eSign. Runs on ECS (EC2 + Fargate) with MySQL on RDS, a read replica for AI chat, and a serverless event platform handling ~32M events/month.",
       image: "/project-dealer-ai.jpg",
-      tags: ["backend", "crm", "api", "architecture", "ai"],
+      tags: ["backend", "crm", "api", "architecture", "ai", "cloud"],
       featured: true,
       techStack: [
         { name: "Node.js", icon: <SiNodedotjs /> },
-        { name: "Fastify", icon: <SiFastify /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
+        { name: "NestJS", icon: <SiNestjs /> },
         { name: "MySQL", icon: <SiMysql /> },
-        { name: "OpenAI", icon: <SiOpenai /> },
+        { name: "AWS", icon: <FaAws /> },
       ],
       keyFeatures: [
-        "IQ Chat: unified thread from Instagram, Messenger, SMS, Email",
-        "Refactored a 100+ page monolithic AI prompt into a modular LangGraph agent architecture",
-        "RBAC, audit trails, e-sign document builder, workflow automation",
-        "Redis caching; WebSockets for real-time notifications",
-        "Integrations: Salesforce, Stripe, Twilio, SendGrid, Meta, OpenAI, KBB, CarGurus, Carfax",
+        "14 microservices on ECS (12 on EC2, 2 on Fargate) behind ALB in a VPC",
+        "Serverless event pipeline: API Gateway, Lambda authorizer, SQS, dispatcher over WebSocket, HTTP and SES",
+        "Missing indexes and slow queries fixed; IQ chat reads moved to a dedicated read replica",
+        "Automated database backups in AWS Backup vaults",
+        "Integrations: Salesforce, Stripe, Twilio, SendGrid, Google Calendar",
       ],
       architecture:
-        "Layered design: Routes → Controllers → Services → Repositories → Validators. Optimized a production chat query from ~45s to ~3s and reduced database CPU utilization from ~99.9% to ~20% using AWS RDS Performance Insights. Audited AWS infrastructure and cut cloud costs by ~$1,100/month. Contributing to refactoring with queues, event-driven architecture, and microservices.",
+        "Large JavaScript backend being modernized into a TypeScript modular monolith with Drizzle ORM. Event pipeline averages 7 ms auth, 15 ms ingestion and 71 ms dispatch at ~115 peak concurrency, with zero Lambda errors over 30 days. Cleared AI-generated-code bottlenecks: primary MySQL CPU ~38% → ~15% and read IOPS down ~90% after ~10x traffic growth.",
       github: "https://github.com/farhankhalidkayani",
       liveDemo: "https://www.dealeriq.ai/",
     },
     {
       id: 2,
-      title: "Befer AI",
+      title: "DealerIQ AI Call & Chat Agent",
       description:
-        "Business management platform with backend APIs supporting bookings, leads, orders, payments, and marketing automation. 60+ service modules with extensive integrations including Stripe, QuickBooks, Google APIs, and OpenAI.",
-      image: "/project-befer-crm.jpg",
-      tags: ["backend", "crm", "api"],
+        "LangGraph-based AI agent that books appointments 24/7 over SMS, Messenger, Instagram and phone. Answers every inbound call, reaches 82% of outbound contacts, and logs summaries, transcripts and recordings to the CRM.",
+      image: "/project-dealer-ai.jpg",
+      tags: ["ai", "backend"],
       techStack: [
+        { name: "LangGraph", icon: <FaPuzzlePiece /> },
+        { name: "LLMs", icon: <SiOpenai /> },
         { name: "Node.js", icon: <SiNodedotjs /> },
-        { name: "Express", icon: <SiExpress /> },
-        { name: "MySQL", icon: <SiMysql /> },
+        { name: "AWS", icon: <FaAws /> },
       ],
       keyFeatures: [
-        "Bookings, leads, orders, payments, marketing automation",
-        "Stripe, QuickBooks, Google APIs, OpenAI integrations",
-        "60+ service modules",
-        "OAuth & JWT authentication",
+        "6,091 appointments booked and ~28,100 customers engaged in ~5 months on one high-volume dealer account",
+        "52% of bookings land after hours, when no human team is responding",
+        "90% of bookings routed straight to human agents",
+        "Re-architected from a monolithic prompt onto LangGraph",
       ],
       architecture:
-        "Modular backend with RESTful APIs, validation, and error handling. Database schema optimized for businesses, customers, and services.",
+        "Production LLM pipeline on LangGraph with voice and messaging channels feeding a single CRM thread, with call summaries, transcripts and recordings persisted per lead.",
       github: "https://github.com/farhankhalidkayani",
-      liveDemo: "https://befer.co/",
+      liveDemo: "https://www.dealeriq.ai/",
     },
     {
       id: 3,
-      title: "Social Bear AI (MVP)",
+      title: "Serverless Event Platform",
       description:
-        "FastAPI backend for social media automation: Instagram and Facebook messaging, automated AI replies, and comment moderation.",
-      image: "/project-befer-mobile.jpg",
-      tags: ["backend", "api"],
+        "Event ingestion and dispatch platform handling ~32M events/month (~1M/day) with zero Lambda errors and 99.96% queue delivery over 30 days.",
+      image: "/project-dealer-ai.jpg",
+      tags: ["cloud", "architecture", "backend"],
       techStack: [
-        { name: "Python", icon: <SiPython /> },
-        { name: "FastAPI", icon: <SiFastapi /> },
+        { name: "API Gateway", icon: <FaAws /> },
+        { name: "Lambda", icon: <FaAws /> },
+        { name: "SQS", icon: <FaAws /> },
+        { name: "Node.js", icon: <SiNodedotjs /> },
       ],
       keyFeatures: [
-        "Instagram & Facebook message handling",
-        "Automated AI replies",
-        "Comment moderation",
+        "API Gateway + Lambda authorizer: ~7 ms average auth",
+        "~15 ms average ingestion into SQS",
+        "Dispatcher over WebSocket, HTTP and SES: ~71 ms average",
+        "~115 peak concurrency with zero Lambda errors",
       ],
       architecture:
-        "FastAPI-based backend for social media automation and AI-driven engagement.",
+        "Fully serverless, queue-decoupled pipeline: authorize at the edge, buffer in SQS, fan out through a dispatcher to WebSocket, HTTP and SES targets.",
       github: "https://github.com/farhankhalidkayani",
       liveDemo: "#",
     },
     {
       id: 4,
-      title: "Social Hub AI (MVP)",
+      title: "Befer AI",
       description:
-        "Backend system for email and SMS marketing campaigns with audience targeting and automated messaging workflows.",
-      image: "/project-befer-mobile.jpg",
-      tags: ["backend", "api"],
+        "AI-powered CRM migrated from Bubble.io to a custom Node.js + MySQL backend. Built JWT and Google OAuth auth, AI voice calling, image upload, Google Calendar sync and Stripe subscriptions.",
+      image: "/project-befer-crm.jpg",
+      tags: ["backend", "crm", "api", "ai"],
       techStack: [
         { name: "Node.js", icon: <SiNodedotjs /> },
-        { name: "Express", icon: <SiExpress /> },
+        { name: "MySQL", icon: <SiMysql /> },
+        { name: "Stripe", icon: <SiStripe /> },
       ],
       keyFeatures: [
-        "Email and SMS marketing campaigns",
-        "Audience targeting",
-        "Automated messaging workflows",
+        "JWT and Google OAuth authentication",
+        "AI voice calling and Google Calendar sync",
+        "Stripe subscriptions",
+        "SendGrid/Twilio email and SMS notifications plus a reminder engine",
       ],
       architecture:
-        "Backend services for campaign management and multi-channel messaging.",
+        "Custom Node.js + MySQL backend replacing a Bubble.io app, with proactive customer engagement driven by a reminder engine.",
       github: "https://github.com/farhankhalidkayani",
-      liveDemo: "#",
+      liveDemo: "https://befer.co/",
     },
     {
       id: 5,
-      title: "Forward Deployed Engineering & Solution Architecture",
+      title: "Salesforce E-Signature Workflow",
       description:
-        "Embedded, client-facing engineering work as a technical SME across presales and discovery calls—translating business requirements directly into CRM, AI, and integration architectures for prospective clients.",
+        "Custom document-signing workflow built and deployed on Salesforce, replacing a third-party e-signature tool.",
       image: "/project-fde.jpg",
-      tags: ["consulting", "architecture", "fde", "ai"],
-      techStack: [
-        { name: "Salesforce", icon: <SiSalesforce /> },
-        { name: "OpenAI", icon: <SiOpenai /> },
-        { name: "Node.js", icon: <SiNodedotjs /> },
-      ],
+      tags: ["backend", "crm"],
+      techStack: [{ name: "Salesforce", icon: <SiSalesforce /> }],
       keyFeatures: [
-        "Act as technical SME on presales/discovery calls across automotive, real estate, and healthcare verticals",
-        "Designed a hybrid front-desk architecture combining a video kiosk, remote agent, AI automation, and EMR integration for a healthcare client, with HIPAA considerations",
-        "Scope integration feasibility (CRM, EMR, communications) and translate business requirements into technical solution designs",
-        "Bridge sales and engineering—prototyping proofs-of-concept to validate architecture decisions before implementation",
+        "Replaced a paid third-party e-signature tool",
+        "Built and deployed end to end inside Salesforce",
       ],
       architecture:
-        "Works directly with clients and product stakeholders to embed engineering judgment into early-stage deal cycles—evaluating existing systems, scoping third-party integrations, and designing solutions that satisfy both technical and compliance constraints ahead of a build commitment.",
+        "Native Salesforce workflow for sending, signing and storing documents.",
       github: "https://github.com/farhankhalidkayani",
       liveDemo: "#",
     },
@@ -203,10 +204,9 @@ const Projects: React.FC = () => {
     { id: "all", label: "All Projects" },
     { id: "backend", label: "Backend" },
     { id: "ai", label: "AI/LLM" },
-    { id: "api", label: "API" },
+    { id: "cloud", label: "Cloud" },
     { id: "architecture", label: "Architecture" },
     { id: "crm", label: "CRM Systems" },
-    { id: "fde", label: "Forward Deployed" },
   ];
 
   return (
@@ -240,9 +240,8 @@ const Projects: React.FC = () => {
             <div className="absolute -top-[4px] left-[50%] w-3 h-3 bg-accent rounded-full"></div>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
-            My projects showcase production experience building AI/LLM-powered
-            platforms, full-stack applications, and integration-heavy SaaS
-            architectures.
+            Production AI, cloud and full-stack systems: LangGraph agents,
+            serverless event pipelines and multi-tenant SaaS on AWS.
           </p>
         </motion.div>
 
@@ -309,16 +308,14 @@ const Projects: React.FC = () => {
                 <div className="ml-3 h-px w-16 bg-accent/50"></div>
               </h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                My approach to backend development centers on creating
-                maintainable, scalable systems with clean code principles. I
-                focus on modular architecture, thorough documentation, and
-                comprehensive testing to ensure robustness. Each project is
-                built with future scaling in mind, implementing best practices
-                for security, performance, and reliability.
+                I design for measured outcomes: profile first, fix the real
+                bottleneck, and keep infrastructure cost and reliability in
+                view. Services stay modular, queue-decoupled and observable,
+                with backups, access control and code review as defaults.
               </p>
 
               <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                {["Scalability", "Security", "Performance"].map((pillar, i) => (
+                {["Scalability", "Reliability", "Cost"].map((pillar, i) => (
                   <motion.div
                     key={pillar}
                     initial={{ opacity: 0, y: 20 }}
@@ -539,21 +536,29 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
 
             <div className="lg:w-[380px] flex-shrink-0 grid grid-cols-2 gap-4">
               <StatTile
+                icon={<FiUsers />}
+                label="Appointments Booked"
+                from={0}
+                to={6091}
+                note="~5 months, one dealer"
+                trend="up"
+              />
+              <StatTile
                 icon={<FiZap />}
-                label="Chat Latency"
-                from={45}
-                to={3}
-                suffix="s"
-                note="from ~45s"
-                trend="down"
+                label="Events / Month"
+                from={0}
+                to={32}
+                suffix="M"
+                note="99.96% queue delivery"
+                trend="up"
               />
               <StatTile
                 icon={<FiDatabase />}
-                label="DB CPU Load"
-                from={99}
-                to={20}
+                label="Primary DB CPU"
+                from={38}
+                to={15}
                 suffix="%"
-                note="from ~99.9%"
+                note="from ~38%"
                 trend="down"
               />
               <StatTile
@@ -566,23 +571,14 @@ const FeaturedProject: React.FC<{ project: Project }> = ({ project }) => {
                 note="infra savings"
                 trend="up"
               />
-              <StatTile
-                icon={<FiUsers />}
-                label="Leads / Day"
-                from={0}
-                to={400}
-                suffix="+"
-                note="per client"
-                trend="up"
-              />
             </div>
           </div>
 
           <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-2 text-sm text-gray-400">
             <FiCpu aria-hidden="true" className="text-amber-400 flex-shrink-0" />
             <span>
-              100M+ LLM tokens processed in production via an OpenAI +
-              LangGraph agent architecture
+              LangGraph call &amp; chat agent engaged ~28,100 customers; 52% of
+              bookings land after hours
             </span>
           </div>
         </div>

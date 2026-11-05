@@ -37,31 +37,26 @@ const About: React.FC = () => {
 
             <div className="space-y-4 text-gray-600 dark:text-gray-300">
               <p>
-                AI & Full-Stack Software Engineer and Technology Consultant
-                with 2+ years of production experience building scalable SaaS
-                and AI-powered platforms end-to-end. I specialize in{" "}
-                <strong>LLM/agent workflows (OpenAI, LangGraph), Node.js, and React/Next.js</strong>,
-                with hands-on work architecting a multi-tenant automotive CRM,
-                optimizing production backend/database workloads, and building
-                full-stack AI features from database to UI.
+                Senior software engineer with 4.5+ years designing and
+                shipping production backend, cloud and AI systems for
+                multi-tenant CRM and automation platforms. I specialize in{" "}
+                <strong>Node.js/TypeScript services, AWS infrastructure and LangGraph-based LLM workflows</strong>,
+                with measurable wins in database performance and cloud cost.
               </p>
 
               <p>
-                Production highlights include reducing chat query latency from{" "}
-                <strong>~45s to ~3s</strong>, cutting database CPU utilization
-                from <strong>~99.9% to ~20%</strong> using AWS RDS Performance
-                Insights, and identifying ~$1,100/month in unused AWS
-                infrastructure. I've also refactored an AI chat system built
-                around a 100+ page prompt into a modular LangGraph-based agent
-                architecture.
+                Highlights: a serverless event platform handling{" "}
+                <strong>~32M events/month</strong> with zero Lambda errors,
+                primary MySQL CPU cut from <strong>~38% to ~15%</strong> after
+                ~10x traffic growth, peak RDS CPU cut from ~99.9% to ~20%, and
+                ~$1,100/month saved on AWS.
               </p>
 
               <p>
-                In my current role as Technology Consultant, I combine
-                hands-on engineering with system architecture, technical
-                discovery, and presales—acting as a technical SME in client
-                conversations to translate business requirements into CRM, AI,
-                and integration architectures.
+                As CTO at Hatzs Dimensions I set architecture standards and the
+                technical roadmap, run a 14-microservice production ECS
+                cluster, own reliability and security, and mentor engineers and
+                run technical hiring—while staying hands-on.
               </p>
 
               <div className="pt-4">
@@ -70,7 +65,7 @@ const About: React.FC = () => {
                 </h4>
                 <div className="border-l-2 border-accent pl-4 py-1">
                   <p className="font-medium">
-                    BS Information Technology — Final Year (CGPA 3.65)
+                    Bachelor's Degree, Information Technology
                   </p>
                   <p className="text-gray-500 dark:text-gray-400">
                     University of Education, Lahore
@@ -94,26 +89,26 @@ const About: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <SpecializationCard
                 icon={<FiCpu />}
-                title="AI & LLM Engineering"
-                description="Building production LLM/agent workflows with OpenAI and LangGraph—prompt engineering, context management, and agent architecture."
+                title="AI Engineering"
+                description="Production LangGraph agents for call and chat: 6,091 appointments booked and ~28,100 customers engaged in ~5 months on one account."
               />
 
               <SpecializationCard
                 icon={<FiDatabase />}
-                title="Database Design"
-                description="Creating optimized database schemas, handling complex queries, and ensuring data integrity across systems."
+                title="Cloud & Infrastructure"
+                description="AWS ECS/Fargate, Lambda, SQS, ALB, VPC and RDS; backups in AWS Backup vaults and ~$1,100/month in cost savings."
               />
 
               <SpecializationCard
                 icon={<FiCode />}
                 title="Full-Stack Development"
-                description="Building end-to-end features with React/Next.js frontends and Node.js REST APIs, from UI to database."
+                description="TypeScript/NestJS services, REST APIs, WebSockets and a modular-monolith modernization with Drizzle ORM."
               />
 
               <SpecializationCard
                 icon={<FiGitBranch />}
-                title="Third-Party Integration"
-                description="Integrating payment gateways, notification systems, authentication providers, and AI services."
+                title="Database Performance"
+                description="Indexes, query rewrites and read replicas: primary MySQL CPU ~38% → ~15% and read IOPS down ~90%."
               />
             </div>
 
@@ -125,24 +120,22 @@ const About: React.FC = () => {
                 <div className="flex items-start">
                   <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
                   <p className="ml-3 text-gray-600 dark:text-gray-300">
-                    Reduced chat service latency from ~45s to ~3s and database
-                    CPU utilization from ~99.9% to ~20% via query and RDS
-                    performance optimization.
+                    Serverless event platform: ~32M events/month, 99.96% queue
+                    delivery, 7 ms auth / 15 ms ingestion / 71 ms dispatch.
                   </p>
                 </div>
                 <div className="flex items-start">
                   <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
                   <p className="ml-3 text-gray-600 dark:text-gray-300">
-                    Audited and decommissioned unused AWS resources, cutting
-                    infrastructure costs by ~$1,100/month.
+                    Cut primary MySQL CPU ~60% and read IOPS ~90% at ~7M+
+                    events/week after ~10x traffic growth.
                   </p>
                 </div>
                 <div className="flex items-start">
                   <div className="h-2 w-2 mt-2 rounded-full bg-accent flex-shrink-0"></div>
                   <p className="ml-3 text-gray-600 dark:text-gray-300">
-                    Refactored a 100+ page monolithic AI prompt into a modular
-                    LangGraph agent architecture for more reliable, maintainable
-                    AI chat behavior.
+                    Re-architected the DealerIQ AI call and chat agent onto
+                    LangGraph; 52% of bookings land after hours.
                   </p>
                 </div>
               </div>

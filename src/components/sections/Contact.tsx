@@ -341,11 +341,11 @@ const Contact: React.FC = () => {
                   Open to Opportunities
                 </h4>
                 <p className="mb-4">
-                  I'm currently available for backend development projects,
-                  freelance work, or discussing new opportunities.
+                  Open to senior engineering, architecture and cloud/AI
+                  consulting conversations.
                 </p>
                 <a
-                  href="mailto:rj.farhan4232@gmail.com?subject=Job%20Opportunity"
+                  href="mailto:rj.farhan4232@gmail.com?subject=Opportunity"
                   className="inline-flex items-center px-4 py-2 bg-white text-accentSolid rounded-md hover:bg-gray-100 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 font-medium"
                 >
                   <FiMail aria-hidden="true" className="mr-2" />
