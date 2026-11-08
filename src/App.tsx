@@ -1,65 +1,48 @@
-import { useState, useEffect } from "react";
-import { AnimatePresence, MotionConfig } from "framer-motion";
-import "./App.css";
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { MotionConfig, motion } from 'framer-motion';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import ScrollManager from './components/layout/ScrollManager';
+import CustomCursor from './components/ui/CustomCursor';
+import Home from './pages/Home';
+import { ease } from './lib/motion';
 
-// Layout Components
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
-import ScrollProgress from "./components/ui/ScrollProgress";
+const Services = lazy(() => import('./pages/Services'));
+const Work = lazy(() => import('./pages/Work'));
+const CaseStudy = lazy(() => import('./pages/CaseStudy'));
+const Contact = lazy(() => import('./pages/Contact'));
 
-// Section Components
-import Hero from "./components/sections/Hero";
-import About from "./components/sections/About";
-import Skills from "./components/sections/Skills";
-import Projects from "./components/sections/Projects";
-import Experience from "./components/sections/Experience";
-import Contact from "./components/sections/Contact";
-
-function App() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Check user's preferred color scheme
-  useEffect(() => {
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      setDarkMode(true);
-    }
-  }, []);
-
-  // Apply dark mode class to html element
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
-
+function Shell() {
+  const { pathname } = useLocation();
   return (
-    <MotionConfig reducedMotion="user">
-      <div
-        className={`min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 bg-noise ${
-          darkMode ? "dark" : ""
-        }`}
-      >
-        <ScrollProgress />
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-        <main>
-          <AnimatePresence>
-            <Hero />
-            <About />
-            <Skills />
-            <Projects />
-            <Experience />
-            <Contact />
-          </AnimatePresence>
-        </main>
-        <Footer />
-      </div>
-    </MotionConfig>
+    <>
+      <Header />
+      <motion.main key={pathname} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.28, ease }}>
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/work/:slug" element={<CaseStudy />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
+      </motion.main>
+      <Footer />
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <MotionConfig reducedMotion="user">
+      <BrowserRouter>
+        <ScrollManager />
+        <CustomCursor />
+        <Shell />
+      </BrowserRouter>
+    </MotionConfig>
+  );
+}

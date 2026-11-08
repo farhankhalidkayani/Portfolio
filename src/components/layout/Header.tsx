@@ -1,232 +1,73 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { FiMenu, FiX } from "react-icons/fi";
-import { Link as ScrollLink } from "react-scroll";
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { nav, person } from '../../data/content';
+import MagneticButton from '../ui/MagneticButton';
+import { ease } from '../../lib/motion';
 
-interface HeaderProps {
-  darkMode: boolean;
-  setDarkMode: (value: boolean) => void;
-}
-
-const SECTION_IDS = [
-  "home",
-  "about",
-  "skills",
-  "projects",
-  "experience",
-  "contact",
-];
-
-const Header: React.FC<HeaderProps> = () => {
+export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [open, setOpen] = useState(false);
+  const { pathname, hash } = useLocation();
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30 });
 
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrolled]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
-    );
-
-    SECTION_IDS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    const on = () => setScrolled(window.scrollY > 24);
+    on();
+    window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
   }, []);
+  useEffect(() => setOpen(false), [pathname, hash]);
+
+  const current = (to: string) => (to.includes('#') ? false : pathname === to || (to !== '/' && pathname.startsWith(to)));
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-sm border-b border-gray-200/60 dark:border-gray-800/60 py-3"
-          : "bg-transparent py-6"
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.3, delay: 0.1, ease }}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled || open ? 'border-line bg-paper/70 backdrop-blur-3xl' : 'border-transparent'
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-6 lg:px-16 flex justify-between items-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-col leading-none"
-        >
-          <ScrollLink
-            to="home"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-            className="text-xl md:text-2xl font-bold text-primary dark:text-white cursor-pointer"
-          >
-            Farhan<span className="text-accent">.</span>Khalid
-          </ScrollLink>
-          <span className="hidden sm:block text-[10px] font-mono text-gray-400 dark:text-gray-500 tracking-[0.15em] mt-0.5">
-            AI &amp; FULL-STACK ENGINEER
-          </span>
-        </motion.div>
-
-        {/* Desktop Navigation */}
-        <nav aria-label="Primary" className="hidden md:flex items-center gap-2">
-          <NavLinks activeSection={activeSection} />
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            <ScrollLink
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              className="ml-4 inline-flex items-center px-4 py-2 rounded-full border border-accent text-accent text-sm font-medium hover:bg-accentSolid hover:border-accentSolid hover:text-white transition-colors cursor-pointer"
-            >
-              Let's Talk
-            </ScrollLink>
-          </motion.div>
+      <div className="mx-auto flex max-w-[84rem] items-center justify-between px-6 py-4 md:px-10">
+        <Link to="/" className="font-display text-base font-semibold tracking-[-0.035em]" data-cursor="hover">{person.name}</Link>
+        <nav className="hidden items-center gap-8 lg:flex">
+          {nav.map((n) => (
+            <Link key={n.label} to={n.to} data-cursor="hover" className={`group relative text-sm transition-colors hover:text-ink ${current(n.to) ? 'text-ink' : 'text-muted'}`}>
+              {n.label}
+              <span className={`absolute -bottom-1 left-0 h-px bg-accent transition-all duration-300 ${current(n.to) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+            </Link>
+          ))}
         </nav>
-
-        {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center">
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:block"><MagneticButton small to="/contact">Let's Talk</MagneticButton></div>
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2"
-            aria-label="Toggle mobile menu"
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+            className="flex size-10 items-center justify-center rounded-full border border-line lg:hidden"
           >
-            {mobileMenuOpen ? (
-              <FiX aria-hidden="true" size={24} />
-            ) : (
-              <FiMenu aria-hidden="true" size={24} />
-            )}
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <motion.div
-          id="mobile-menu"
-          className="md:hidden bg-white dark:bg-gray-800 shadow-lg"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-        >
-          <nav aria-label="Mobile" className="flex flex-col py-4">
-            <NavLinks
-              mobile
-              setMobileMenuOpen={setMobileMenuOpen}
-              activeSection={activeSection}
-            />
-          </nav>
-        </motion.div>
-      )}
+      <motion.div style={{ scaleX: progress }} className="absolute inset-x-0 bottom-[-1px] h-px origin-left bg-accent" />
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease }}
+            className="flex flex-col gap-1 border-t border-line px-6 pb-8 pt-4 lg:hidden"
+          >
+            {nav.map((n) => (
+              <Link key={n.label} to={n.to} className="py-2 font-display text-3xl font-semibold tracking-[-0.045em]">{n.label}</Link>
+            ))}
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
-};
-
-interface NavLinksProps {
-  mobile?: boolean;
-  setMobileMenuOpen?: (value: boolean) => void;
-  activeSection: string;
 }
-
-const NavLinks: React.FC<NavLinksProps> = ({
-  mobile = false,
-  setMobileMenuOpen,
-  activeSection,
-}) => {
-  const links = [
-    { name: "Home", href: "home", num: "00" },
-    { name: "About", href: "about", num: "01" },
-    { name: "Skills", href: "skills", num: "02" },
-    { name: "Projects", href: "projects", num: "03" },
-    { name: "Experience", href: "experience", num: "04" },
-    { name: "Contact", href: "contact", num: "05" },
-  ];
-
-  const handleClick = () => {
-    if (mobile && setMobileMenuOpen) {
-      setMobileMenuOpen(false);
-    }
-  };
-
-  return (
-    <>
-      {links.map((link, index) => {
-        const isActive = activeSection === link.href;
-        return (
-          <motion.div
-            key={link.name}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 * index }}
-            className={mobile ? "" : "inline-block"}
-          >
-            <ScrollLink
-              to={link.href}
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              aria-current={isActive ? "true" : undefined}
-              className={`relative font-medium text-sm transition-colors cursor-pointer ${
-                mobile
-                  ? `py-3 px-6 flex items-center gap-2 border-b border-gray-100 dark:border-gray-700 ${
-                      isActive
-                        ? "text-accent"
-                        : "text-gray-600 dark:text-gray-300"
-                    }`
-                  : `px-3 py-2 flex items-center gap-1.5 rounded-full ${
-                      isActive
-                        ? "text-accent"
-                        : "text-gray-600 hover:text-accent dark:text-gray-300 dark:hover:text-accent"
-                    }`
-              }`}
-              onClick={handleClick}
-            >
-              <span aria-hidden="true" className="font-mono text-[11px] text-accent/70">
-                {link.num}.
-              </span>
-              {link.name}
-              {isActive && !mobile && (
-                <motion.span
-                  layoutId="nav-active-pill"
-                  className="absolute inset-0 -z-10 rounded-full bg-accent/10 dark:bg-accent/15"
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                />
-              )}
-            </ScrollLink>
-          </motion.div>
-        );
-      })}
-    </>
-  );
-};
-
-export default Header;

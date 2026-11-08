@@ -1,33 +1,120 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap");
-@import "tailwindcss";
-@config "../tailwind.config.js";
+@import 'tailwindcss';
 
-/*
- * Theme tokens live here (Tailwind v4's native mechanism) rather than in
- * tailwind.config.js's `theme.extend` — that legacy JS path proved unreliable
- * for custom keys in this project's setup (utilities silently failed to
- * generate for some keys). @theme is the first-class, reliable v4 API.
- */
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "Fira Code", monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
 
-  --color-primary: #0f172a;
-  --color-secondary: #1e293b;
-  /* amber-700: ~5:1 contrast on white/gray-50 surfaces (WCAG AA), light-mode default */
-  --color-accent: #b45309;
-  /* Fixed shade for solid CTA buttons/fills that carry white text — needs to
-     stay legible regardless of the page's light/dark theme. */
-  --color-accentSolid: #b45309;
-  --color-lightBlue: #d97706;
-  --color-darkBlue: #78350f;
+  --color-ink: #0b0b0c;
+  --color-ink-soft: #1a1a1d;
+  --color-muted: #6b6b70;
+  --color-line: #e3e3df;
+  --color-line-dark: #ffffff1f;
+  --color-paper: #f7f7f5;
+  --color-sand: #f1efe8;
+  --color-mist: #eceff4;
+  --color-frame: #e4e4e4;
+
+  --container-shell: 84rem;
+  --tracking-display: -0.045em;
+  --tracking-headline: -0.035em;
+  --ease-premium: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 46s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+/* Plain variables so Framer Motion can animate to them. */
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
 }
 
-.dark {
-  /* amber-400: ~10:1 contrast on gray-800/gray-900 surfaces (WCAG AA) */
-  --color-accent: #fbbf24;
+:root {
+  --accent: #5b3df5;
+  --accent-soft: rgb(91 61 245 / 0.1);
+}
+
+@layer base {
+  *, ::before, ::after { border-color: var(--color-line); }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-optical-sizing: auto; }
+  button, [role='button'] { cursor: pointer; }
+  ::selection { background: var(--accent); color: #fff; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+}
+
+/* Background patterns — one faint layer per section */
+.fx-grid {
+  background-image:
+    linear-gradient(to right, rgba(11,11,12,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11,11,12,0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.55;
+  mask-image: radial-gradient(circle at 50% 30%, black 0%, transparent 78%);
+}
+.fx-dots {
+  background-image: radial-gradient(rgba(11,11,12,0.09) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.7;
+  mask-image: radial-gradient(circle at 100% 0%, black 0%, transparent 70%);
+}
+.fx-corner {
+  background-image:
+    linear-gradient(to right, rgba(11,11,12,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11,11,12,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 0% 100%, black 0%, transparent 65%);
+}
+.fx-hatch {
+  background-image: repeating-linear-gradient(135deg, rgba(11,11,12,0.045) 0 1px, transparent 1px 14px);
+  opacity: 0.6;
+  mask-image: radial-gradient(circle at 100% 50%, black 0%, transparent 70%);
+}
+.fx-vlines {
+  background-image: repeating-linear-gradient(to right, rgba(11,11,12,0.05) 0 1px, transparent 1px 120px);
+  opacity: 0.6;
+}
+.fx-vlines-dark {
+  background-image: repeating-linear-gradient(to right, rgba(255,255,255,0.06) 0 1px, transparent 1px 96px);
+}
+.fx-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+}
+@keyframes drift {
+  0%, 100% { transform: translateY(0); opacity: 0; }
+  20%, 80% { opacity: 0.8; }
+  100% { transform: translateY(-26px); }
+}
+@keyframes ring { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(2.4); opacity: 0; } }
+@keyframes scrolldot { 0% { transform: translateY(-100%); } 100% { transform: translateY(260%); } }
+
+@media (pointer: fine) and (min-width: 768px) {
+  html.has-cursor, html.has-cursor * { cursor: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,159 +1,45 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiMail, FiArrowUp } from "react-icons/fi";
-import { Link as ScrollLink } from "react-scroll";
+import { Link } from 'react-router-dom';
+import { nav, person } from '../../data/content';
 
-const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
+export default function Footer() {
   return (
-    <motion.footer
-      className="bg-gray-50 dark:bg-gray-900 py-12 border-t border-gray-200 dark:border-gray-800 relative overflow-hidden bg-zigzag-pattern"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.5 }}
-    >
-      {/* Decorative elements */}
-      <div className="absolute inset-0 bg-diagonal-pattern opacity-50"></div>
-      <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/5 dark:bg-accent/10 rounded-full blur-3xl"></div>
-
-      <div className="container mx-auto px-6 lg:px-16 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <motion.div
-            className="mb-6 md:mb-0"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-          >
-            <h3 className="text-2xl font-bold text-primary dark:text-white">
-              Farhan<span className="text-accent">.</span>Khalid
-            </h3>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
-              Senior Software Engineer | Full-Stack | AWS Cloud | AI Systems
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="flex space-x-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-          >
-            <a
-              href="https://github.com/farhankhalidkayani"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-all duration-300 transform hover:scale-110 p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:shadow-md"
-              aria-label="GitHub"
-            >
-              <FiGithub aria-hidden="true" size={22} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/farhankhalidkayani/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-all duration-300 transform hover:scale-110 p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:shadow-md"
-              aria-label="LinkedIn"
-            >
-              <FiLinkedin aria-hidden="true" size={22} />
-            </a>
-            <a
-              href="mailto:rj.farhan4232@gmail.com"
-              className="text-gray-600 hover:text-accent dark:text-gray-400 dark:hover:text-accent transition-all duration-300 transform hover:scale-110 p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:shadow-md"
-              aria-label="Email"
-            >
-              <FiMail aria-hidden="true" size={22} />
-            </a>
-          </motion.div>
-        </div>
-
-        <div className="py-6 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-b border-gray-200 dark:border-gray-800">
-          <div className="space-y-2">
-            <h4 className="font-semibold text-primary dark:text-white text-lg">
-              Navigation
-            </h4>
-            <ul className="space-y-2">
-              {[
-                "Home",
-                "About",
-                "Skills",
-                "Projects",
-                "Experience",
-                "Contact",
-              ].map((item) => (
-                <li key={item}>
-                  <ScrollLink
-                    to={item.toLowerCase()}
-                    smooth={true}
-                    offset={-70}
-                    duration={500}
-                    className="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition-colors text-sm cursor-pointer"
-                  >
-                    {item}
-                  </ScrollLink>
+    <footer className="border-t border-line bg-paper">
+      <div className="mx-auto max-w-[84rem] px-6 py-14 md:px-10">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
+          <div>
+            <p className="font-display text-xl font-semibold tracking-[-0.035em]">{person.name}</p>
+            <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted">{person.tagline}</p>
+            <a href={`mailto:${person.email}`} className="mt-4 inline-block text-sm hover:text-accent">{person.email}</a>
+          </div>
+          <div>
+            <p className="mb-4 text-[11px] uppercase tracking-[0.2em] text-muted">Pages</p>
+            <ul className="space-y-2 text-sm">
+              {nav.map((n) => <li key={n.label}><Link to={n.to} className="hover:text-accent">{n.label}</Link></li>)}
+            </ul>
+          </div>
+          <div>
+            <p className="mb-4 text-[11px] uppercase tracking-[0.2em] text-muted">Elsewhere</p>
+            <ul className="space-y-2 text-sm">
+              {person.socials.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noreferrer" className="group hover:text-accent">
+                    {s.label} <span className="inline-block transition-transform group-hover:-translate-y-px group-hover:translate-x-px">↗</span>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
-
-          <div className="space-y-2">
-            <h4 className="font-semibold text-primary dark:text-white text-lg">
-              Contact
-            </h4>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
-              rj.farhan4232@gmail.com
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Lahore, Pakistan
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <h4 className="font-semibold text-primary dark:text-white text-lg">
-              Let's Connect
-            </h4>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Interested in working together? Feel free to reach out for
-              collaboration opportunities.
-            </p>
-          </div>
         </div>
-
-        <div className="mt-8 flex flex-col md:flex-row justify-between items-center">
-          <motion.p
-            className="text-gray-600 dark:text-gray-400 text-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+        <div className="mt-12 flex items-center justify-between border-t border-line pt-6 text-xs text-muted">
+          <p>© {new Date().getFullYear()} {person.name}</p>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="rounded-full border border-line px-4 py-2 text-ink transition-colors hover:border-ink hover:bg-white"
           >
-            &copy; {currentYear} Farhan Khalid. All rights reserved.
-          </motion.p>
+            Back to top
+          </button>
         </div>
-
-        {/* Back to top button */}
-        <motion.button
-          onClick={scrollToTop}
-          className="absolute right-8 bottom-8 p-3 rounded-full bg-accentSolid/90 text-white shadow-lg hover:bg-accentSolid transition-colors duration-300 hover:shadow-xl"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          aria-label="Scroll to top"
-        >
-          <FiArrowUp aria-hidden="true" size={20} />
-        </motion.button>
       </div>
-    </motion.footer>
+    </footer>
   );
-};
-
-export default Footer;
+}
