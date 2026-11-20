@@ -2,7 +2,7 @@
 
 export const person = {
   name: 'Farhan Khalid',
-  tagline: 'Senior Software Engineer · CTO',
+  tagline: 'Senior Full-Stack & AI Engineer',
   email: 'rj.farhan4232@gmail.com',
   portrait: '/images/portrait.png',
   socials: [
@@ -20,28 +20,28 @@ export const nav = [
 ];
 
 export const hero = {
-  label: 'AI × Cloud × Backend × Leadership',
-  line1: 'I Build Backends',
+  label: 'AI × Full-Stack × Cloud × Client Delivery',
+  line1: 'I Build Products',
   line2: 'That Think, Scale & Hold.',
   paragraph:
-    "I'm Farhan Khalid — a senior software engineer and CTO with 4.5+ years shipping production backend, cloud and AI systems for multi-tenant CRM and automation platforms, from Node.js services to AWS infrastructure and LangGraph agents.",
-  status: 'CTO at Hatzs Dimensions',
-  chips: ['AI', 'AWS', 'TS', 'SQL', 'CTO'],
+    "I'm Farhan Khalid — a senior full-stack and AI engineer with 4.5+ years shipping production software for multi-tenant CRM platforms. I work directly with clients to study their business, research the best solution and ship it: React and Next.js front ends, Node.js services, AWS and LangGraph agents.",
+  status: 'Senior Software Engineer at Hatzs Dimensions',
+  chips: ['AI', 'React', 'AWS', 'TS', 'SQL'],
 };
 
 export const about = {
   label: 'About',
-  heading: 'More Than a Backend Engineer. Less Than a Black Box.',
-  lead: 'I design and ship the systems behind CRM and AI products — and I stay close enough to the code to know what they actually cost to run.',
-  body: 'Highlights so far: a serverless event platform handling ~32M events a month with zero Lambda errors, primary MySQL CPU cut from ~38% to ~15% after ~10x traffic growth, and ~$1,100 a month saved on AWS. As CTO I set architecture standards, run a 14-microservice ECS cluster, and mentor engineers while staying hands-on.',
+  heading: 'Full-Stack, AI and Close to the Customer.',
+  lead: 'I sit with clients, learn how their business runs, research the right approach and ship it — and I stay close enough to the code to know what it costs to run.',
+  body: 'Highlights so far: AI agents that booked 6,250+ appointments, a serverless event platform handling ~30M events a month, a live DMS inventory sync that replaced a client\'s manual entry, primary MySQL CPU cut from ~38% to ~15% after ~10x traffic growth, and ~$1,100 a month saved on AWS. I run a 14-microservice ECS cluster and mentor engineers while staying hands-on.',
   steps: [
-    { title: 'Understand', text: 'Read the problem before the code.' },
-    { title: 'Architect', text: 'Pick boring, scalable parts.' },
-    { title: 'Build', text: 'Typed services and clean APIs.' },
+    { title: 'Understand', text: 'Study the client\'s business before the code.' },
+    { title: 'Research', text: 'Test options, pick the simplest that works.' },
+    { title: 'Build', text: 'React front ends, typed services, clean APIs.' },
     { title: 'Optimize', text: 'Measure, then tune queries and cost.' },
-    { title: 'Lead', text: 'Review, mentor, set the roadmap.' },
+    { title: 'Deliver', text: 'Ship, show the results, keep improving.' },
   ],
-  roles: ['AI Engineer', 'Backend Engineer', 'Cloud Architect', 'Technical Lead', 'CTO'],
+  roles: ['AI Engineer', 'Full-Stack Engineer', 'Forward Deployed Engineer', 'Backend Engineer', 'Cloud Architect'],
 };
 
 export type VisualKey = 'network' | 'board' | 'wireframe' | 'code' | 'bars';
@@ -67,18 +67,18 @@ export const services = [
   {
     id: 'backend',
     number: '02',
-    title: 'Backend & APIs',
+    title: 'Full-Stack & APIs',
     description:
-      'Typed Node.js services, REST APIs and WebSockets for multi-tenant SaaS, modernized toward a clean modular monolith.',
-    tools: ['Node.js', 'TypeScript', 'NestJS', 'Drizzle'],
+      'React and Next.js front ends on typed Node.js services, REST APIs and WebSockets for multi-tenant SaaS, modernized toward a clean modular monolith.',
+    tools: ['React', 'Next.js', 'Node.js', 'TypeScript'],
     visual: 'code' as VisualKey,
     capabilities: [
+      'React and Next.js front ends',
       'TypeScript and NestJS services',
       'REST APIs and WebSockets',
       'JWT and OAuth authentication',
       'Payment, messaging and CRM integrations',
       'Modular-monolith modernization',
-      'Multi-tenant data design',
     ],
   },
   {
@@ -115,32 +115,33 @@ export const services = [
     ],
   },
   {
-    id: 'leadership',
+    id: 'client-delivery',
     number: '05',
-    title: 'Technical Leadership',
+    title: 'Client Discovery & Delivery',
     description:
-      'Architecture standards, review practices and honest estimates for the people who have to decide.',
+      'Working directly with client teams: study the business need, research the options, build the fix and show the result.',
     tools: [],
     visual: 'wireframe' as VisualKey,
     capabilities: [
-      'Architecture standards and roadmap',
+      'Discovery, requirements and technical presales',
+      'Integrations with client systems, such as live DMS inventory sync',
+      'Estimates, cost and risk',
       'Code review and QA practices',
       'Root cause analysis',
-      'Estimates, cost and risk for the CEO',
       'Mentoring and technical hiring',
     ],
   },
 ];
 
 export const tools = [
-  'Node.js', 'TypeScript', 'NestJS', 'LangGraph', 'AWS ECS', 'Lambda', 'SQS',
+  'React', 'Next.js', 'Node.js', 'TypeScript', 'NestJS', 'LangGraph', 'AWS ECS', 'Lambda', 'SQS',
   'MySQL', 'Amazon RDS', 'Drizzle ORM', 'Python', 'Salesforce', 'Stripe', 'Twilio',
 ];
 
 export const stats = [
-  { value: 32, suffix: 'M+', label: 'Events a month' },
+  { value: 30, suffix: 'M', label: 'Events a month' },
   { value: 14, suffix: '', label: 'Production microservices' },
-  { value: 6091, suffix: '', label: 'Appointments booked by AI' },
+  { value: 6250, suffix: '+', label: 'Appointments booked by AI' },
   { value: 4.5, suffix: '+', label: 'Years shipping' },
 ];
 
@@ -198,9 +199,9 @@ export const projects: Project[] = [
     description:
       'Leads, bookings, AI voice and chat agents, a power dialer and eSign on ECS and MySQL, with a serverless event platform behind it.',
     summary:
-      'A multi-tenant automotive CRM that outgrew its original backend. I helped modernize it toward a TypeScript modular monolith and kept production fast through ~10x traffic growth.',
+      'A multi-tenant automotive CRM that outgrew its original backend. I helped modernize it toward a TypeScript modular monolith and kept production fast through ~10x traffic growth. During client onboarding I work directly with dealerships; for one I built a live inventory sync from their DMS that replaced manual entry.',
     client: 'Hatzs Dimensions',
-    role: 'Backend · Architecture · CTO',
+    role: 'Full-Stack · Backend · Client Delivery',
     timeline: 'Ongoing',
     challenge:
       'A large JavaScript backend with AI-generated code was hitting database bottlenecks as traffic grew roughly tenfold. It needed to stay fast and affordable while the product kept shipping.',
@@ -208,7 +209,7 @@ export const projects: Project[] = [
       { value: '14', label: 'Microservices on ECS' },
       { value: '~38→15%', label: 'Primary MySQL CPU' },
       { value: '-90%', label: 'Read IOPS' },
-      { value: '~32M', label: 'Events a month' },
+      { value: '~30M', label: 'Events a month' },
     ],
     chapters: [
       { title: 'A cluster that runs the whole product', text: '14 microservices — 12 on EC2 and 2 on Fargate — behind an ALB in a VPC, serving the CRM, AI agents, power dialer and eSign.', image: '/images/diq-1.png' },
@@ -239,9 +240,9 @@ export const projects: Project[] = [
     challenge:
       'A monolithic prompt made the agent hard to extend and hard to trust. It had to handle voice and messaging in one thread and hand off cleanly to people.',
     metrics: [
-      { value: '6,091', label: 'Appointments booked' },
-      { value: '~28.1k', label: 'Customers engaged' },
-      { value: '52%', label: 'Bookings after hours' },
+      { value: '6,250+', label: 'Appointments booked' },
+      { value: '60k+', label: 'Customers replied' },
+      { value: '54%', label: 'Bookings after hours' },
       { value: '82%', label: 'Outbound contacts reached' },
     ],
     chapters: [
@@ -263,7 +264,7 @@ export const projects: Project[] = [
     year: 'Production',
     title: 'Serverless Event Pipeline',
     description:
-      'Ingestion and dispatch for ~32M events a month with zero Lambda errors and 99.96% queue delivery.',
+      'Ingestion and dispatch for ~30M events a month with zero dead-lettered messages.',
     summary:
       'The platform needed to take in a steady flood of events and fan them out reliably. I designed a queue-decoupled serverless pipeline that stays fast and nearly free of errors.',
     client: 'DealerIQ AI',
@@ -275,12 +276,12 @@ export const projects: Project[] = [
       { value: '~7 ms', label: 'Average auth' },
       { value: '~15 ms', label: 'Average ingestion' },
       { value: '~71 ms', label: 'Average dispatch' },
-      { value: '99.96%', label: 'Queue delivery' },
+      { value: '0', label: 'Dead-lettered messages' },
     ],
     chapters: [
       { title: 'Authorize at the edge', text: 'API Gateway with a Lambda authorizer rejects bad requests before they cost anything.', image: '/images/event-1.svg' },
       { title: 'Buffer in SQS', text: 'Ingestion writes to SQS, so spikes of about 115 concurrent requests never reach consumers directly.', image: '/images/event-2.svg' },
-      { title: 'Fan out through a dispatcher', text: 'A dispatcher delivers over WebSocket, HTTP and SES with zero Lambda errors across 30 days.', image: '/images/event-3.svg' },
+      { title: 'Fan out through a dispatcher', text: 'A dispatcher delivers over WebSocket, HTTP and SES with 3 Lambda errors across ~30M invocations in 30 days.', image: '/images/event-3.svg' },
     ],
     image: '/images/event-main.svg',
     heroImage: '/images/event-main.svg',
@@ -335,12 +336,12 @@ export const contact = {
   availabilityNote: 'Reach out about roles, consulting or collaboration.',
   facts: [
     { icon: 'mail', text: person.email },
-    { icon: 'briefcase', text: 'CTO at Hatzs Dimensions' },
-    { icon: 'layers', text: 'Node.js · TypeScript · AWS · LangGraph' },
+    { icon: 'briefcase', text: 'Senior Software Engineer at Hatzs Dimensions' },
+    { icon: 'layers', text: 'React · Node.js · TypeScript · AWS · LangGraph' },
   ],
   faqs: [
-    { q: 'What do you work on?', a: 'Backend services, AWS infrastructure, database performance and production AI agents.' },
-    { q: 'Can you work with an existing team?', a: 'Yes. Most of my work is inside an existing codebase and team.' },
+    { q: 'What do you work on?', a: 'Full-stack web apps, production AI agents, AWS infrastructure and database performance.' },
+    { q: 'Can you work directly with clients?', a: 'Yes. I study the client\'s business, research the options and build the solution with them, usually inside an existing team and codebase.' },
     { q: 'How should I reach out?', a: 'Use the form or email directly with a short description of the problem.' },
   ],
   topics: ['Role / opportunity', 'Consulting', 'AI & LLM systems', 'Cloud & infrastructure', 'Something else'],
